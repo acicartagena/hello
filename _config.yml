@@ -28,7 +28,7 @@ twitter_username: acicartagena
 github_username:  acicartagena
 
 # Build settings
-theme: jekyll-theme-minimal
+theme: minima
 plugins:
   - jekyll-feed
 
