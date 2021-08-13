@@ -7,8 +7,15 @@ layout: default
 <div class="container">
   <div class="row animate">
     {% if site.posts.size > 0 %}
+    <b>hello i have posts</b>
       {% for post in paginator.posts %}
-        {% include article-content.html %}
+        <h1><a href="{{ post.url }}">{{ post.title }}</a></h1>
+        <p class="author">
+        <span class="date">{{ post.date }}</span>
+        </p>
+        <div class="content">
+        {{ post.content }}
+        </div>
       {% endfor %}
     {% endif %}
   </div>
