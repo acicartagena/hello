@@ -1,25 +1,21 @@
 #-------------------------------
 # General Site Settings
-title: Joseph Lawrence
+title: Hello!
 logo: # You can add own logo. For example '/images/logo.png'.
-description: Joseph is a super minimal content focus theme for Jekyll.
+description: Hello
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://joseph-jekyll.netlify.app" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://aci.codes" # the base hostname & protocol for your site, e.g. http://example.com
 
 #-------------------------------
 # Author Settings
 author:
-  name: Joseph Lawrence
-  bio: I'm a designer & products creator. I teach designers code and developers design. Passionate about people, health, & design systems.
+  name: Aci Cartagena
+  bio:  Pragmatic software developer
   avatar: '/images/01.jpg'
 
 social:
-- {icon: "ion-logo-twitter", label: Twitter, link: "https://twitter.com"}
-- {icon: "ion-logo-facebook", label: Facebook, link: "https://facebook.com"}
-- {icon: "ion-logo-pinterest", label: Pinterest, link: "https://pinterest.com"}
-- {icon: "ion-logo-dribbble", label: Dribbble, link: "https://dribbble.com"}
-- {icon: "ion-logo-instagram", label: Instagram, link: "https://instagram.com"}
-- {icon: "ion ion-logo-vimeo", label: Vimeo, link: "https://vimeo.com"}
+- {icon: "ion-logo-twitter", label: Twitter, link: "https://twitter.com/acicartagena"}
+- {icon: "ion-logo-github", label: Github, link: "https://github.com/acicartagena"}
 
 # Example of adding a new link to the author section and footer - {icon: "ion-logo-github", label: Github, link: "https://github.com"}
 # Other icons can be found at https://ionicons.com/v4/
@@ -27,39 +23,28 @@ social:
 #-------------------------------
 # Hero Settings
 hero:
-  hero__title: Hey, I’m Joseph! Designer & Developer.
-  hero__description: I'm a designer & products creator. I teach designers code and developers design. Passionate about people, health, & design systems.
+  hero__title: Hello :)
+  hero__description: This is me trying things and writing about them. I also write down things I want to remember later. Or things I find interesting
   hero__image: '/images/01.jpg'
-
-
-#-------------------------------
-# Newsletter (_includes/footer-widgets/widget-subscribe.html)
-mailchimp: true # To enable the mailchimp form, use the value 'true'. To disable the form, use the value 'false' or leave the field blank.
-mailchimp__title: Get interesting news # Add your Title
-mailchimp__text: Subscribe to our newsletter and we’ll send you the emails of latest posts. # Add your description.
-mailchimp__identifier: # Add your MailChimp form identifier. For example - blogenjoyfreedom.us16.list-manage.com/subscribe/post?u=cd56155d76ddeeb4c0bc4d080&amp;id=7a526cd13e
-mailchimp__button__text: Join # Add your button text
-
 
 #-------------------------------
 # Contact Settings
 contact:
-  email: your@email.com # Add your email for contact form
-  description: Joseph comes with a built-in contact form, that you can use with Formspree service to handle up to 50 submissions per month for free. You could also easily switch to another contact form service if you want. # Add a description of your form
+  email: hello@aci.codesz # Add your email for contact form
+  description: Email me :)
 
-# NOTE
-# Joseph comes with a built-in contact form, that you can use with Formspree service to handle up to 50 submissions per month for free. You could also easily switch to another contact form service if you want.
-
-
-#-------------------------------
-# Comment Section (Disqus)
-disqus-identifier: anvodstudio-demo # add your shortname for Disqus Comment. For example anvodstudio-demo
+# # NOTE
+# # Joseph comes with a built-in contact form, that you can use with Formspree service to handle up to 50 submissions per month for free. You could also easily switch to another contact form service if you want.
 
 
-#-------------------------------
-# Google Analytics
-google-analytics: # Add your identifier. For example UA-99631805-1.
+# #-------------------------------
+# # Comment Section (Disqus)
+# disqus-identifier: anvodstudio-demo # add your shortname for Disqus Comment. For example anvodstudio-demo
 
+
+# #-------------------------------
+# # Google Analytics
+# google-analytics: # Add your identifier. For example UA-99631805-1.
 
 #-------------------------------
 # Build Settings
