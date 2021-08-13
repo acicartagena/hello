@@ -1,53 +1,93 @@
-# Welcome to Jekyll!
-#
-# This config file is meant for settings that affect your whole blog, values
-# which you are expected to set up once and rarely edit after that. If you find
-# yourself editing this file very often, consider using Jekyll's data files
-# feature for the data you need to update frequently.
-#
-# For technical reasons, this file is *NOT* reloaded automatically when you use
-# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
-#
-# If you need help with YAML syntax, here are some quick references for you: 
-# https://learn-the-web.algonquindesign.ca/topics/markdown-yaml-cheat-sheet/#yaml
-# https://learnxinyminutes.com/docs/yaml/
-#
-# Site settings
-# These are used to personalize your new site. If you look in the HTML files,
-# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
-# You can create any custom variable you would like, and they will be accessible
-# in the templates via {{ site.myvariable }}.
-
-title: hello
-email: hello@aci.codes
-description: >- # this means to ignore newlines until "baseurl:"
-  hello hello hello. i am an aspiring pragmatic software developer.
+#-------------------------------
+# General Site Settings
+title: Joseph Lawrence
+logo: # You can add own logo. For example '/images/logo.png'.
+description: Joseph is a super minimal content focus theme for Jekyll.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: acicartagena
-github_username:  acicartagena
+url: "https://joseph-jekyll.netlify.app" # the base hostname & protocol for your site, e.g. http://example.com
 
-# Build settings
-theme: minima
+#-------------------------------
+# Author Settings
+author:
+  name: Joseph Lawrence
+  bio: I'm a designer & products creator. I teach designers code and developers design. Passionate about people, health, & design systems.
+  avatar: '/images/01.jpg'
+
+social:
+- {icon: "ion-logo-twitter", label: Twitter, link: "https://twitter.com"}
+- {icon: "ion-logo-facebook", label: Facebook, link: "https://facebook.com"}
+- {icon: "ion-logo-pinterest", label: Pinterest, link: "https://pinterest.com"}
+- {icon: "ion-logo-dribbble", label: Dribbble, link: "https://dribbble.com"}
+- {icon: "ion-logo-instagram", label: Instagram, link: "https://instagram.com"}
+- {icon: "ion ion-logo-vimeo", label: Vimeo, link: "https://vimeo.com"}
+
+# Example of adding a new link to the author section and footer - {icon: "ion-logo-github", label: Github, link: "https://github.com"}
+# Other icons can be found at https://ionicons.com/v4/
+
+#-------------------------------
+# Hero Settings
+hero:
+  hero__title: Hey, I’m Joseph! Designer & Developer.
+  hero__description: I'm a designer & products creator. I teach designers code and developers design. Passionate about people, health, & design systems.
+  hero__image: '/images/01.jpg'
+
+
+#-------------------------------
+# Newsletter (_includes/footer-widgets/widget-subscribe.html)
+mailchimp: true # To enable the mailchimp form, use the value 'true'. To disable the form, use the value 'false' or leave the field blank.
+mailchimp__title: Get interesting news # Add your Title
+mailchimp__text: Subscribe to our newsletter and we’ll send you the emails of latest posts. # Add your description.
+mailchimp__identifier: # Add your MailChimp form identifier. For example - blogenjoyfreedom.us16.list-manage.com/subscribe/post?u=cd56155d76ddeeb4c0bc4d080&amp;id=7a526cd13e
+mailchimp__button__text: Join # Add your button text
+
+
+#-------------------------------
+# Contact Settings
+contact:
+  email: your@email.com # Add your email for contact form
+  description: Joseph comes with a built-in contact form, that you can use with Formspree service to handle up to 50 submissions per month for free. You could also easily switch to another contact form service if you want. # Add a description of your form
+
+# NOTE
+# Joseph comes with a built-in contact form, that you can use with Formspree service to handle up to 50 submissions per month for free. You could also easily switch to another contact form service if you want.
+
+
+#-------------------------------
+# Comment Section (Disqus)
+disqus-identifier: anvodstudio-demo # add your shortname for Disqus Comment. For example anvodstudio-demo
+
+
+#-------------------------------
+# Google Analytics
+google-analytics: # Add your identifier. For example UA-99631805-1.
+
+
+#-------------------------------
+# Build Settings
+markdown: kramdown
+permalink: /:title
 plugins:
-  - jekyll-feed
+  - jekyll-paginate
+  - jekyll-sitemap
+  - jekyll/tagging
 
-# Exclude from processing.
-# The following items will not be processed, by default.
-# Any item listed under the `exclude:` key here will be automatically added to
-# the internal "default list".
-#
-# Excluded items can be processed by explicitly listing the directories or
-# their entries' file path in the `include:` list.
-#
-# exclude:
-#   - .sass-cache/
-#   - .jekyll-cache/
-#   - gemfiles/
-#   - Gemfile
-#   - Gemfile.lock
-#   - node_modules/
-#   - vendor/bundle/
-#   - vendor/cache/
-#   - vendor/gems/
-#   - vendor/ruby/
+paginate: 5
+paginate_path: "/page/:num"
+
+# Pages Path
+defaults:
+  - scope:
+      path: '_pages'
+    values:
+      permalink: /:basename:output_ext
+
+include:
+  - _pages
+
+# Tags
+tag_page_dir:         tag
+tag_page_layout:      tag_page
+tag_permalink_style:  /:title
+
+sass:
+  sass_dir: _sass
+  style: compressed
