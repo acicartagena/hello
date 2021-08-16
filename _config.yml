@@ -25,7 +25,7 @@ social:
 hero:
   hero__title: Hello :)
   hero__description: Random thoughts on software development, mostly iOS & Swift. Figuring this (blogging) out as I go.
-  hero__image: '/images/asset-home2.png'
+  hero__image: '/images/asset-home5.png'
 
 #-------------------------------
 # Contact Settings

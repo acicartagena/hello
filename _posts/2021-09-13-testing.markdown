@@ -1,9 +1,17 @@
 ---
 layout: post
-title:  Testing testing
-description: Sin tantum est boni praeter summam voluptatem, et eam sempiternam. Cur post Tarentum ad Archytam. Qua ex cognitione facilior facta est investigatio rerum occultissimarum, empull...
-date:   2018-11-14 15:01:35 +0300
-image:  '/images/02.jpg'
-tags:   [workflow, testing]
+title:  Hello World
+description: TLDR Reasons why I started a blog and what I'm hoping to get out of it
+date:   2021-08-16 20:12:35 +1000
+image:  '/images/posts/hello-world.png'
+tags:   [hello]
 ---
-Sin tantum est boni praeter summam voluptatem, et eam sempiternam. Cur post Tarentum ad Archytam. Qua ex cognitione facilior facta est investigatio rerum occultissimarum, empulla enim tenuissimo victu, id est contemptissimis escis et potionibus, minorem voluptatem percipi quam rebus exquisitissimis ad epulandum. Non enim iam stirpis bonum quaeret, sed animalis. Qui autem esse poteris, nisi te amor ipse ceperit. Sic igitur in homine perfectio ista in eo potissimum, quod est optimum, id est in virtute, laudatur. Natura sic ab iis investigata est, ut nulla pars caelo, mari, terra, ut poëtice loquar, praetermissa sit. Eadem nunc mea adversum te oratio est. Mihi quidem Homerus huius modi quiddam vidisse videatur in iis, quae de Sirenum cantibus ages tandem finxerit.
+TLDR:
+- this blog has different goals:
+    - improve my technical writing skills
+    - share coding thoughts & ideas
+    - keep track and something to look back on for reference
+- feedback is welcome! (always be improving)
+- i'm going to treat posts as living documents and will update as I go / learn more
+
+//actual post to follow :)
