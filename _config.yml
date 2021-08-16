@@ -65,15 +65,15 @@ pagination:
 # paginate: 2
 # paginate_path: "/page/:num"
 
-# # Pages Path
-# defaults:
-#   - scope:
-#       path: '_pages'
-#     values:
-#       permalink: /:basename:output_ext
+# Pages Path
+defaults:
+  - scope:
+      path: '_pages'
+    values:
+      permalink: /:basename:output_ext
 
-# include:
-#   - _pages
+include:
+  - _pages
 
 # Tags
 tag_page_dir:         tag

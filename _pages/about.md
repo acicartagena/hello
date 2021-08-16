@@ -2,7 +2,6 @@
 layout: page
 title: About [DRAFT]
 permalink: /about/
-image: ''
 ---
 
 // TODO

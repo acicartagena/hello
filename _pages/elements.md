@@ -2,7 +2,6 @@
 layout: page
 title: Elements
 permalink: /elements/
-image: '/images/11.jpg'
 ---
 
 A paragraph looks like this — In omni enim arte vel studio vel quavis scientia vel in ipsa virtute optimum quidque rarissimum est. Quod est, ut dixi, habere ea, quae secundum naturam sint, vel omnia vel plurima et maxima. Quodsi ipsam honestatem undique pertectam atque absolutam. Tecum optime, deinde etiam cum mediocri amico. Neque enim disputari sine reprehensione nec cum iracundia aut pertinacia recte disputari potest. Partus ancillae sitne in fructu.
