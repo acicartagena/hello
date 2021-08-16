@@ -14,7 +14,7 @@ gem "bundler"
 # end
 gem "webrick", "~> 1.7"
 gem "jekyll"
-gem "jekyll-paginate"
 gem 'jekyll-tagging'
 gem "jekyll-sitemap"
 gem "kramdown-parser-gfm"
+gem "jekyll-paginate-v2"
