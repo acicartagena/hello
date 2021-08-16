@@ -1,16 +1,16 @@
 #-------------------------------
 # General Site Settings
-title: Hello!
+title: aci.codes
 logo: # You can add own logo. For example '/images/logo.png'.
-description: Hello
+description: # idunno what to put here 
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://aci.codes" # the base hostname & protocol for your site, e.g. http://example.com
 
 #-------------------------------
 # Author Settings
 author:
-  name: Aci Cartagena
-  bio:  Pragmatic software developer
+  name: Aci
+  bio:  i like to code :)
   avatar: '/images/01.jpg'
 
 social:
@@ -24,13 +24,13 @@ social:
 # Hero Settings
 hero:
   hero__title: Hello :)
-  hero__description: This is me trying things and writing about them. I also write down things I want to remember later. Or things I find interesting
-  hero__image: '/images/01.jpg'
+  hero__description: Figuring this (blogging) out as I go. Random thoughts on software development, mostly iOS & Swift. 
+  hero__image: '/images/asset-home.png'
 
 #-------------------------------
 # Contact Settings
 contact:
-  email: hello@aci.codesz # Add your email for contact form
+  email: hello@aci.codes # Add your email for contact form
   description: Email me :)
 
 # # NOTE
