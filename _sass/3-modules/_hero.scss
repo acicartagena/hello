@@ -27,14 +27,13 @@
   .hero__image {
     position: relative;
     z-index: 10;
-    width: 380px;
-    height: 480px;
+    width: 680px;
+    height: 280px;
     margin: 0 auto;
     border-radius: 2px;
     overflow: hidden;
     user-select: none;
     background: var(--text-color);
-    box-shadow: 10px 10px 0 var(--heading-font-color);
 
     img {
       position: absolute;
@@ -43,7 +42,6 @@
       height: 100%;
       width: 100%;
       object-fit: cover;
-      border-radius: 2px;
     }
 
 
