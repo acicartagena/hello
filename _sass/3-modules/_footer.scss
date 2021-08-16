@@ -13,7 +13,7 @@
 
   .footer__inner {
     position: relative;
-    padding: 32px 0;
+    padding: 4px 0;
 
     .col {
       position: relative;
@@ -271,13 +271,15 @@
   }
 }
 
+.footer_spacer { clear: both; height: 10px; }
+
 /* Footer Info */
 .footer__info {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  padding: 44px 0;
+  padding: 10px 0;
   border-top: 1px solid var(--border-color-alt);
   
   @media only screen and (max-width: $mobile) {
