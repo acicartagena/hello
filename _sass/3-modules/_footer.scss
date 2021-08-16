@@ -2,6 +2,10 @@
 .footer {
   margin-top: 96px;
   background: var(--background-alt-color);
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  position: fixed;
 
   .row .col {
     flex-grow: 1;
@@ -9,7 +13,7 @@
 
   .footer__inner {
     position: relative;
-    padding: 68px 0;
+    padding: 32px 0;
 
     .col {
       position: relative;
