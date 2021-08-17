@@ -2,12 +2,12 @@
   
     {
       "title"    : "Compassionate Code Reviews",
-      "article"  : "<div class='article col col-12 animate'> <div class='article__inner'> <div class='article__content'> <h2 class='article__title'> <a href='/posts/compassionate-code-reviews'>Compassionate Code Reviews<i class='ion ion-md-arrow-round-forward'></i></a> </h2> <div class='article__meta'> <time class='article__date' datetime='2021-08-17T19:17:03+10:00'>17 August 2021</time> – <span class='article__minutes'>1 min read</span> </div><p class='article__excerpt'>TLDR - On PRs ask is it true? is it honest? is it kind?. Provide as much context as possible</p><div class='article__bottom'><div class='article-tags__box'><a href='/tag/code reviews' class='article__tag'>code reviews</a></div></div></div></div></div>",
+      "article"  : "<div class='article col col-12 animate'> <div class='article__inner'> <div class='article__content'> <h2 class='article__title'> <a href='/posts/compassionate-code-reviews'>Compassionate Code Reviews<i class='ion ion-md-arrow-round-forward'></i></a> </h2> <div class='article__meta'> <time class='article__date' datetime='2021-08-17T23:48:04+10:00'>17 August 2021</time> – <span class='article__minutes'>1 min read</span> </div><p class='article__excerpt'>TLDR - On PRs ask is it true? is it honest? is it kind?. Provide as much context as possible</p><div class='article__bottom'><div class='article-tags__box'><a href='/tag/code reviews' class='article__tag'>code reviews</a></div></div></div></div></div>",
       "category" : "",
       "tags"     : "code reviews",
       "url"      : "/posts/compassionate-code-reviews",
-      "date"     : "2021-08-17 19:17:03 +1000",
-      "content"  : "TLDR:  compassionate code review  author PR guide  reviewer PR guide***"
+      "date"     : "2021-08-17 23:48:04 +1000",
+      "content"  : "TLDR:  compassionate code review  author PR guide  reviewer PR guidehttps://google.github.io/eng-practices/review/reviewer/standard.html  The code improves the overall health of the systemEvery change list (pull request) improves the overall health of the system. The idea is that as a result of such small improvements, the health of the software or codebase will improve after every merge.References:  Compassionate Yet Candid Code Reviews by April Wensel  https://www.michaelagreiler.com/respectful-constructive-code-review-feedback/  https://phauer.com/2018/code-review-guidelines/  https://dev.to/mateusz_janusz/how-to-do-code-reviews-and-keep-a-positive-relationship-with-your-colleagues-2161  https://google.github.io/eng-practices/review/reviewer/comments.html  https://google.github.io/eng-practices/review/reviewer/pushback.html  https://mtlynch.io/human-code-reviews-1/  https://mtlynch.io/human-code-reviews-2/"
     } ,
   
     {
