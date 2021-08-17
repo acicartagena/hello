@@ -1,6 +1,6 @@
 #-------------------------------
 # General Site Settings
-title: hello
+title: aci.codes
 logo: '/images/favicon.png'
 description: # idunno what to put here 
 baseurl: "" # the subpath of your site, e.g. /blog
