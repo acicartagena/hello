@@ -1,10 +1,10 @@
 #-------------------------------
 # General Site Settings
 title: aci.codes
-logo: # You can add own logo. For example '/images/logo.png'.
+logo: '/images/logo.png'
 description: # idunno what to put here 
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://aci.codes" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://aci.codes"
 
 #-------------------------------
 # Author Settings
@@ -16,7 +16,7 @@ author:
 social:
 - {icon: "ion-logo-github", label: Github, link: "https://github.com/acicartagena"}
 - {icon: "ion-logo-twitter", label: Twitter, link: "https://twitter.com/acicartagena"}
-- {icon: "ion-logo-linkedin", label: LinkedIn, link: "https://www.linkedin.com/in/angela-cartagena-43506944/"}
+- {icon: "ion-logo-linkedin", label: LinkedIn, link: "https://www.linkedin.com/in/angela-cartagena/"}
 
 
 # Example of adding a new link to the author section and footer - {icon: "ion-logo-github", label: Github, link: "https://github.com"}
@@ -32,7 +32,7 @@ hero:
 #-------------------------------
 # Contact Settings
 contact:
-  email: hello@aci.codes # Add your email for contact form
+  email: hello@aci.codes 
   description: Email me :)
 
 # # NOTE
@@ -51,7 +51,7 @@ contact:
 #-------------------------------
 # Build Settings
 markdown: kramdown
-permalink: /:title
+permalink: /posts/:title
 plugins:
   - jekyll-sitemap
   - jekyll/tagging
