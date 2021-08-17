@@ -1,7 +1,7 @@
 #-------------------------------
 # General Site Settings
-title: aci.codes
-logo: '/images/logo.png'
+title: hello
+logo: '/images/favicon.png'
 description: # idunno what to put here 
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://aci.codes"
@@ -61,6 +61,7 @@ pagination:
   enabled: true
   per_page: 5
   permalink: /page/:num'
+  sort_reverse: true
 
 # paginate: 2
 # paginate_path: "/page/:num"

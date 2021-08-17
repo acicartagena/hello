@@ -1,6 +1,26 @@
 [
   
     {
+      "title"    : "Compassionate Code Reviews",
+      "article"  : "<div class='article col col-12 animate'> <div class='article__inner'> <div class='article__content'> <h2 class='article__title'> <a href='/posts/compassionate-code-reviews'>Compassionate Code Reviews<i class='ion ion-md-arrow-round-forward'></i></a> </h2> <div class='article__meta'> <time class='article__date' datetime='2021-08-17T19:01:07+10:00'>17 August 2021</time> – <span class='article__minutes'>1 min read</span> </div><p class='article__excerpt'>TLDR - On PRs ask is it true? is it honest? is it kind?. Provide as much context as possible</p><div class='article__bottom'><div class='article-tags__box'><a href='/tag/code reviews' class='article__tag'>code reviews</a></div></div></div></div></div>",
+      "category" : "",
+      "tags"     : "code reviews",
+      "url"      : "/posts/compassionate-code-reviews",
+      "date"     : "2021-08-17 19:01:07 +1000",
+      "content"  : "TLDR:  compassionate code review  author PR guide  reviewer PR guide***"
+    } ,
+  
+    {
+      "title"    : "Learning Kotlin from a Swift Developer POV",
+      "article"  : "<div class='article col col-12 animate'> <div class='article__inner'> <div class='article__content'> <h2 class='article__title'> <a href='/posts/learning-kotlin'>Learning Kotlin from a Swift Developer POV<i class='ion ion-md-arrow-round-forward'></i></a> </h2> <div class='article__meta'> <time class='article__date' datetime='2021-08-17T19:00:42+10:00'>17 August 2021</time> – <span class='article__minutes'>1 min read</span> </div><p class='article__excerpt'>TLDR Kotlin is both very similar and at the same time different from Swift. WIP</p><div class='article__bottom'><div class='article-tags__box'><a href='/tag/hello' class='article__tag'>hello</a></div></div></div></div></div>",
+      "category" : "",
+      "tags"     : "hello",
+      "url"      : "/posts/learning-kotlin",
+      "date"     : "2021-08-17 19:00:42 +1000",
+      "content"  : "TLDR:  How I start learning Kotlin  Kotlin and Swift similarities and differences"
+    } ,
+  
+    {
       "title"    : "Hello World",
       "article"  : "<div class='article col col-12 animate'> <div class='article__inner'> <div class='article__content'> <h2 class='article__title'> <a href='/posts/hello-world'>Hello World<i class='ion ion-md-arrow-round-forward'></i></a> </h2> <div class='article__meta'> <time class='article__date' datetime='2021-08-16T20:12:35+10:00'>16 August 2021</time> – <span class='article__minutes'>3min read</span> </div><p class='article__excerpt'>TLDR Reasons why I started a blog and what I&#39;m hoping to get out of it</p><div class='article__bottom'><div class='article-tags__box'><a href='/tag/hello' class='article__tag'>hello</a></div></div></div></div></div>",
       "category" : "",

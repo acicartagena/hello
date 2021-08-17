@@ -5,6 +5,14 @@
 <lastmod>2021-08-16T20:12:35+10:00</lastmod>
 </url>
 <url>
+<loc>http://localhost:4000/posts/learning-kotlin</loc>
+<lastmod>2021-08-17T19:00:42+10:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/posts/compassionate-code-reviews</loc>
+<lastmod>2021-08-17T19:01:07+10:00</lastmod>
+</url>
+<url>
 <loc>http://localhost:4000/about/</loc>
 </url>
 <url>
@@ -12,5 +20,8 @@
 </url>
 <url>
 <loc>http://localhost:4000/tag/hello</loc>
+</url>
+<url>
+<loc>http://localhost:4000/tag/code-reviews</loc>
 </url>
 </urlset>
