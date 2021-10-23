@@ -6,22 +6,22 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Compassionate Code Reviews</title>
-  <meta name='description' content='TLDR - On PRs ask is it true? is it honest? is it kind?. Provide as much context as possible'>
+  <title>Thoughts on Code Reviews</title>
+  <meta name='description' content='Fundamental flaws feedback, compassionate code review and other thoughts that help me when doing code reviews'>
 
-  <link rel="canonical" href="http://localhost:4000/posts/compassionate-code-reviews">
+  <link rel="canonical" href="http://localhost:4000/posts/thoughts-on-code-reviews">
   <link rel="alternate" type="application/rss+xml" title="aci.codes" href="/feed.xml">
   <link rel="shortcut icon" type="image/png" href="/images/favicon.png">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Compassionate Code Reviews – aci.codes">
-  <meta name="twitter:description" content="TLDR - On PRs ask is it true? is it honest? is it kind?. Provide as much context as possible">
+  <meta name="twitter:title" content="Thoughts on Code Reviews – aci.codes">
+  <meta name="twitter:description" content="Fundamental flaws feedback, compassionate code review and other thoughts that help me when doing code reviews">
   <meta name="twitter:image:src" content="http://localhost:4000/images/posts/code-reviews.png">
 
   <!-- Facebook OpenGraph -->
-  <meta property="og:title" content="Compassionate Code Reviews – aci.codes" />
-  <meta property="og:description" content="TLDR - On PRs ask is it true? is it honest? is it kind?. Provide as much context as possible" />
+  <meta property="og:title" content="Thoughts on Code Reviews – aci.codes" />
+  <meta property="og:description" content="Fundamental flaws feedback, compassionate code review and other thoughts that help me when doing code reviews" />
   <meta property="og:image" content="http://localhost:4000/images/posts/code-reviews.png" />
 
   <!-- Fonts -->
@@ -79,10 +79,6 @@
                   <li class="nav__item">
                     <a href="/about/" class="nav__link">About [DRAFT]</a>
                   </li>
-                  
-                
-              
-                
                   
                 
               
@@ -178,7 +174,7 @@
   <div class="row">
     <div class="col col-12">
       <div class="post-image">
-        <img src="/images/posts/code-reviews.png" alt="Compassionate Code Reviews">
+        <img src="/images/posts/code-reviews.png" alt="Thoughts on Code Reviews">
       </div>
     </div>
   </div>
@@ -189,9 +185,9 @@
 <div class="container animate">
 
   <div class="post__info">
-    <h1 class="post__title">Compassionate Code Reviews</h1>
+    <h1 class="post__title">Thoughts on Code Reviews</h1>
     <div class="post__meta">
-      <time class="post__date" datetime="2021-08-17T23:48:04+10:00">17 August 2021</time> – <span class="post__minutes">  1 min read 
+      <time class="post__date" datetime="2021-10-22T21:12:35+11:00">22 October 2021</time> – <span class="post__minutes">  6 min read 
       </span>
     </div>
   </div>
@@ -199,33 +195,89 @@
   <article class="post">
 
     <div class="post__content">
-      <h3 id="tldr">TLDR:</h3>
+      <p>When reviewing code, I used to think it had to be something I 100% agree with.  I thought I was doing right, making sure any code that gets merged is as good as it can be. Looking back, acting as a custodian of the codebase, I was walking the line between that and gatekeeping. Back then, I was all about code consistency and maintainability, and I thought frustrating code review experiences were a trade-off to ensure a consistent codebase. Don’t get me wrong. Code consistency and maintainability are essential. But focusing too much on the current way we’re doing things, we might miss out on improving things for the better.</p>
+
+<h3 id="not-the-best-choice-versus-fundamental-flaws-feedback">“Not the best choice” versus fundamental flaws feedback</h3>
+<p>New ideas or new ways of doing things are introduced in a code base and communicated via code review. Regardless of whether or not this is a good way to introduce changes (especially when working as a team), it happens often as we all aim to make code better. When trying to find the balance between maintaining consistency using existing patterns vs. exploring new ideas, I go back to this line from <a href="https://blog.doist.com/decision-making-flat-organization/">this</a> article: Is this change something I can live with?</p>
+
+<blockquote>
+  <p>Is this change something I can live with?</p>
+</blockquote>
+
+<p><em>“Not the best choice”</em> versus <em>fundamental flaws</em> feedback helps me figure out how much value I put in the changes I want to be done. <em>Not the best choice</em> means I can think of a better solution, but what’s currently there is acceptable. The <em>fundamental flaws</em> feedback is where the current solution is unacceptable and being able to mention why concretely. There will always be different ways to solve one problem. The critical thing to keep in mind is that the solution doesn’t always have to be how I thought.</p>
+
+<h3 id="compassionate-code-review-comments">Compassionate Code Review Comments</h3>
+<p>When it comes to actual code review comments, <a href="https://www.youtube.com/watch?v=Ea8EiIPZvh0">this presentation</a> on compassionate code reviews is my go-to for more practical tips. It talks about three filters to use to check.</p>
+
 <ul>
-  <li>compassionate code review</li>
-  <li>author PR guide</li>
-  <li>reviewer PR guide</li>
+  <li>Is it True?
+    <ul>
+      <li>if it’s a fact (mention the source/additional documentation),  if it’s opinion or a preference (say so explicitly), try a question and avoid “shoulds” or “right/wrong” language</li>
+    </ul>
+  </li>
+  <li>Is it Necessary?
+    <ul>
+      <li>be aware of nitpicks, and check does it have to be addressed by this pull request</li>
+    </ul>
+  </li>
+  <li>Is it Kind?
+    <ul>
+      <li>assume competence and seek to understand and remember you’re dealing with a human with emotions</li>
+    </ul>
+  </li>
 </ul>
 
-<hr />
+<p>One of the more valuable tips is trying a question instead of telling the author what to do. A question can come in many forms. I initially took this advice and added, “can you do/change ___ ?”. I was still telling the author what I wanted to be achieved and masked it with a question. And so sometimes I try to ask “what do you think of __ ?”. This way we can have a discussion first, maybe they’ve thought about it tried it out and it didn’t work or maybe this suggestion has inspired them and we can work on the solution together.</p>
 
-<p>https://google.github.io/eng-practices/review/reviewer/standard.html</p>
-<ol>
-  <li>The code improves the overall health of the system</li>
-</ol>
+<p>Over time, instead of making the author change their code, I moved to ask why the code was that way. From the answer I get, I could get more context as to their thinking and the requirement. Getting more context by asking why first has helped me weigh whether the changes I want to be done fit the problem being solved.</p>
 
-<p>Every change list (pull request) improves the overall health of the system. The idea is that as a result of such small improvements, the health of the software or codebase will improve after every merge.</p>
+<p>As part of dealing with humans with emotions, I’d also try to look for positive things or things I found to be good and make sure to let the author know by giving praise or a thumbs-up emoji. It might be considered noise by other people, but positive and negative feedback will help ensure good practices are communicated and maintained.</p>
 
-<h3 id="references">References:</h3>
+<h3 id="give-more-context">Give more context</h3>
+<p>After figuring out what sort of code changes I think can make the code better, I try and sort out the reasoning why. When asking someone to change their current approach (something that works and is probably tested), I find it helps the suggestion whenever I give more context. The reasoning can give insight into my thought process and double-check my assumptions with my code review comment. If my goal is to teach a pattern or a principle, providing the reason also makes it easier for them to remember and adapt in the future.</p>
+
+<p>Lastly, after explaining why, I also try and think if a code snippet or an example would help lessen misunderstanding. It provides something concrete that can be easily discussed. Sometimes describing changes or pseudocode can lead to assumptions being made and more back and forth if those assumptions aren’t aligned. I also hope it shows that I (as a reviewer) have also made an effort to figure out if my suggestion would work with the current code being reviewed.</p>
+
+<p>It might seem a lot of work to do all these when talking about code. (It’s something that I try to be mindful of, and I don’t always get it done) However, code reviews aren’t like coding (where we’re communicating with a computer, and it’s primarily black or white or right or wrong). Code reviews communicate with a human (with emotions and ego) and deal with shades of gray. The outcome or the code changes might be the same, but the experience or how you get there with the discussion will be different. Over time, a collection of less frustrating code reviews is better for the people working on the same codebase.</p>
+
+<h3 id="what-i-read-or-watched">What I Read (or Watched)</h3>
 <ul>
-  <li><a href="https://www.youtube.com/watch?v=Ea8EiIPZvh0">Compassionate Yet Candid Code Reviews by April Wensel</a></li>
-  <li>https://www.michaelagreiler.com/respectful-constructive-code-review-feedback/</li>
-  <li>https://phauer.com/2018/code-review-guidelines/</li>
-  <li>https://dev.to/mateusz_janusz/how-to-do-code-reviews-and-keep-a-positive-relationship-with-your-colleagues-2161</li>
-  <li>https://google.github.io/eng-practices/review/reviewer/comments.html</li>
-  <li>https://google.github.io/eng-practices/review/reviewer/pushback.html</li>
-  <li>https://mtlynch.io/human-code-reviews-1/</li>
-  <li>https://mtlynch.io/human-code-reviews-2/</li>
+  <li><a href="https://www.youtube.com/watch?v=Ea8EiIPZvh0">Compassionate Yet Candid Code Reviews</a> by April Wensel
+    <ul>
+      <li>25 minute video on the 3 filters to ask for compassionate code reviews</li>
+    </ul>
+  </li>
+  <li><a href="https://mtlynch.io/human-code-reviews-2/">How to Do Code Reviews Like a Human (Part Two</a>
+    <ul>
+      <li>Provides a familiar example of a bad code review</li>
+      <li>Offers up tips like bringing code up by a letter grade (from C to B), respect the scope of the review</li>
+    </ul>
+  </li>
+  <li><a href="https://github.com/babylonhealth/ios-playbook/blob/master/Etiquette/CODE_REVIEW.md">Babylon Health Etiquette on Code reviews</a>
+    <ul>
+      <li>Has good bullet points for everyone, for code reviewers and code authors</li>
+    </ul>
+  </li>
+  <li><a href="https://phauer.com/2018/code-review-guidelines/">Code Review Guidelines for Humans</a> by Philipp Hauer
+    <ul>
+      <li>Bit of a longer read, but it does provide good explanations for the different points made. It also has examples</li>
+      <li>There’s also a “cheat sheet” similar to Babylon health’s bullet points at the bottom of the article</li>
+    </ul>
+  </li>
+  <li>Google Engineering Practices
+    <ul>
+      <li><a href="https://google.github.io/eng-practices/review/reviewer/standard.html">The standard of code review</a>
+        <ul>
+          <li>Goal of new code is to improve the overall health of the codebase, code being reviewed doesn’t have to be perfect</li>
+        </ul>
+      </li>
+      <li><a href="https://google.github.io/eng-practices/review/reviewer/comments.html">How to write code review comments</a></li>
+      <li><a href="https://google.github.io/eng-practices/review/reviewer/pushback.html">Handling pushback in code reviews</a></li>
+    </ul>
+  </li>
 </ul>
+
+<p>(Hello, I would be really grateful to get some comments/suggestions/feedback about this post. You can email me at hello@aci.codes or find me on Twitter @acicartagena)</p>
 
     </div>
 
@@ -235,6 +287,8 @@
       <div class="post__tags">
         
         <a href="/tag/code reviews" class="post__tag">code reviews</a>
+        
+        <a href="/tag/software development" class="post__tag">software development</a>
         
       </div>
       
@@ -250,7 +304,7 @@
 
     <div class="top" title="Top"><i class="ion ion-ios-arrow-round-up"></i></div>
     <!-- begin footer -->
-<div class="footer-spacer"></div>
+<div class="footer_spacer"></div>
 <footer class="footer">
   <div class="container">
     <div class="row">
