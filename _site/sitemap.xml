@@ -9,6 +9,10 @@
 <lastmod>2021-10-22T21:12:35+11:00</lastmod>
 </url>
 <url>
+<loc>http://localhost:4000/posts/hello-kotlin</loc>
+<lastmod>2021-12-10T11:12:35+11:00</lastmod>
+</url>
+<url>
 <loc>http://localhost:4000/about/</loc>
 </url>
 <url>
@@ -22,5 +26,8 @@
 </url>
 <url>
 <loc>http://localhost:4000/tag/software-development</loc>
+</url>
+<url>
+<loc>http://localhost:4000/tag/kotlin</loc>
 </url>
 </urlset>

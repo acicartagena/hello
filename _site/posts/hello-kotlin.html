@@ -1,0 +1,1214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Hello Kotlin, from a Swift Developer</title>
+  <meta name='description' content='Notes from Head First Kotlin'>
+
+  <link rel="canonical" href="http://localhost:4000/posts/hello-kotlin">
+  <link rel="alternate" type="application/rss+xml" title="aci.codes" href="/feed.xml">
+  <link rel="shortcut icon" type="image/png" href="/images/favicon.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Hello Kotlin, from a Swift Developer – aci.codes">
+  <meta name="twitter:description" content="Notes from Head First Kotlin">
+  <meta name="twitter:image:src" content="http://localhost:4000/images/posts/learning-kotlin.png">
+
+  <!-- Facebook OpenGraph -->
+  <meta property="og:title" content="Hello Kotlin, from a Swift Developer – aci.codes" />
+  <meta property="og:description" content="Notes from Head First Kotlin" />
+  <meta property="og:image" content="http://localhost:4000/images/posts/learning-kotlin.png" />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,400;0,500;0,700;0,900;1,900&display=swap" rel="stylesheet">
+
+  <!-- Ionicons -->
+  <link href="https://unpkg.com/ionicons@4.2.2/dist/css/ionicons.min.css" rel="stylesheet">
+
+  <script>
+    if (localStorage.getItem("theme") === "dark") {
+      document.documentElement.setAttribute("dark", "");
+      document.documentElement.classList.add('dark-mode');
+    }
+  </script>
+
+  <style>
+  
+      /*!------------------------------------------------------------------
+[MAIN STYLESHEET]
+-------------------------------------------------------------------*/:root{--brand-color: #533feb;--white: #fff;--light-gray: #f0f0f0;--gray: #6a6d76;--dark: #0c101a;--dark-blue: #1e2740;--background-color: var(--white);--background-alt-color: var(--dark);--text-color: var(--dark-blue);--text-alt-color: var(--gray);--heading-font-color: var(--dark-blue);--link-color: var(--dark-blue);--link-color-hover: var(--brand-color);--button-color: var(--white);--button-background-color: var(--dark-blue);--button-background-hover: var(--brand-color);--border-color: var(--light-gray);--border-color-alt: #212630;--tr-color: var(--light-gray);--syntax-highlighting-background: #f3f3f3}:root[dark]{--brand-color: #533feb;--white: #fff;--light-gray: #f0f0f0;--dark: #0c101a;--background-color: var(--dark);--background-alt-color: #080b12;--text-color: #9a9eab;--text-alt-color: #848690;--heading-font-color: var(--light-gray);--link-color: var(--light-gray);--link-color-hover: var(--brand-color);--button-color: var(--white);--button-background-color: #080b12;--button-background-hover: var(--brand-color);--border-color: #252629;--border-color-alt: #212630;--tr-color: #080b12;--syntax-highlighting-background: #080b12}.list-reset{list-style-type:none;margin:0;padding:0}.clearfix::after,.clearfix ::before{content:"";display:table;clear:both}.screen-reader-text{clip:rect(1px, 1px, 1px, 1px);height:1px;overflow:hidden;position:absolute !important;width:1px;word-wrap:normal !important}/*! normalize.css v8.0.0 | MIT License | github.com/necolas/normalize.css */html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}h1{font-size:2em;margin:0.67em 0}hr{box-sizing:content-box;height:0;overflow:visible}pre{font-family:monospace, monospace;font-size:1em}a{background-color:transparent}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted}b,strong{font-weight:bolder}code,kbd,samp{font-family:monospace, monospace;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-0.25em}sup{top:-0.5em}img{border-style:none}button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;line-height:1.15;margin:0}button,input{overflow:visible}button,select{text-transform:none}button,[type="button"],[type="reset"],[type="submit"]{-webkit-appearance:button}button::-moz-focus-inner,[type="button"]::-moz-focus-inner,[type="reset"]::-moz-focus-inner,[type="submit"]::-moz-focus-inner{border-style:none;padding:0}button:-moz-focusring,[type="button"]:-moz-focusring,[type="reset"]:-moz-focusring,[type="submit"]:-moz-focusring{outline:1px dotted ButtonText}fieldset{padding:0.35em 0.75em 0.625em}legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal}progress{vertical-align:baseline}textarea{overflow:auto}[type="checkbox"],[type="radio"]{box-sizing:border-box;padding:0}[type="number"]::-webkit-inner-spin-button,[type="number"]::-webkit-outer-spin-button{height:auto}[type="search"]{-webkit-appearance:textfield;outline-offset:-2px}[type="search"]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}details{display:block}summary{display:list-item}template{display:none}[hidden]{display:none}body,h1,h2,h3,h4,h5,h6,p,blockquote,pre,dl,dd,ol,ul,fieldset,legend,figure,hr{margin:0;padding:0}li>ul,li>ol{margin-bottom:0}table{border-collapse:collapse;border-spacing:0}h1,h2,h3,h4,h5,h6,ul,ol,dl,blockquote,p,address,hr,table,fieldset,figure,pre{margin-bottom:32px}ul,ol,dd{margin-left:16px}ul li,ol li{margin-bottom:10px}.highlight{background:var(--syntax-highlighting-background)}.highlighter-rouge .highlight{background:#eef}.highlight .c{color:#998;font-style:italic}.highlight .err{color:#a61717;background-color:#e3d2d2}.highlight .k{font-weight:bold}.highlight .o{font-weight:bold}.highlight .cm{color:#998;font-style:italic}.highlight .cp{color:#999;font-weight:bold}.highlight .c1{color:#998;font-style:italic}.highlight .cs{color:#999;font-weight:bold;font-style:italic}.highlight .gd{color:#000;background-color:#fdd}.highlight .gd .x{color:#000;background-color:#faa}.highlight .ge{font-style:italic}.highlight .gr{color:#a00}.highlight .gh{color:#999}.highlight .gi{color:#000;background-color:#dfd}.highlight .gi .x{color:#000;background-color:#afa}.highlight .go{color:#888}.highlight .gp{color:#555}.highlight .gs{font-weight:bold}.highlight .gu{color:#aaa}.highlight .gt{color:#a00}.highlight .kc{font-weight:bold}.highlight .kd{font-weight:bold}.highlight .kp{font-weight:bold}.highlight .kr{font-weight:bold}.highlight .kt{color:#5d76bf;font-weight:bold}.highlight .m{color:#099}.highlight .s{color:#ec2355}.highlight .na{color:teal}.highlight .nb{color:#0086B3}.highlight .nc{color:#5d76bf;font-weight:bold}.highlight .no{color:teal}.highlight .ni{color:purple}.highlight .ne{color:#900;font-weight:bold}.highlight .nf{color:#900;font-weight:bold}.highlight .nn{color:#555}.highlight .nt{color:#4d65dc}.highlight .nv{color:teal}.highlight .ow{font-weight:bold}.highlight .w{color:#bbb}.highlight .mf{color:#099}.highlight .mh{color:#099}.highlight .mi{color:#099}.highlight .mo{color:#099}.highlight .sb{color:#ec2355}.highlight .sc{color:#ec2355}.highlight .sd{color:#ec2355}.highlight .s2{color:#ec2355}.highlight .se{color:#ec2355}.highlight .sh{color:#ec2355}.highlight .si{color:#ec2355}.highlight .sx{color:#ec2355}.highlight .sr{color:#009926}.highlight .s1{color:#ec2355}.highlight .ss{color:#990073}.highlight .bp{color:#999}.highlight .vc{color:teal}.highlight .vg{color:teal}.highlight .vi{color:teal}.highlight .il{color:#099}.container{max-width:1080px;padding-left:16px;padding-right:16px;margin:0 auto}@media only screen and (max-width: 1140px){.container{max-width:1000px}}@media only screen and (max-width: 1024px){.container{max-width:740px}}@media only screen and (max-width: 768px){.container{max-width:560px}}@media only screen and (max-width: 576px){.container{max-width:480px}}.row{display:flex;flex-wrap:wrap;flex:0 1 auto;flex-direction:row;box-sizing:border-box;margin-left:-16px;margin-right:-16px}.col{padding-left:16px;padding-right:16px}[class^="col-"]{flex:auto}.col-0{width:0%}.col-1{width:8.3333333333%}.col-2{width:16.6666666667%}.col-3{width:25%}.col-4{width:33.3333333333%}.col-5{width:41.6666666667%}.col-6{width:50%}.col-7{width:58.3333333333%}.col-8{width:66.6666666667%}.col-9{width:75%}.col-10{width:83.3333333333%}.col-11{width:91.6666666667%}.col-12{width:100%}.push-0{margin-left:0%}.push-1{margin-left:8.3333333333%}.push-2{margin-left:16.6666666667%}.push-3{margin-left:25%}.push-4{margin-left:33.3333333333%}.push-5{margin-left:41.6666666667%}.push-6{margin-left:50%}.push-7{margin-left:58.3333333333%}.push-8{margin-left:66.6666666667%}.push-9{margin-left:75%}.push-10{margin-left:83.3333333333%}.push-11{margin-left:91.6666666667%}.push-12{margin-left:100%}.pull-0{margin-right:0%}.pull-1{margin-right:8.3333333333%}.pull-2{margin-right:16.6666666667%}.pull-3{margin-right:25%}.pull-4{margin-right:33.3333333333%}.pull-5{margin-right:41.6666666667%}.pull-6{margin-right:50%}.pull-7{margin-right:58.3333333333%}.pull-8{margin-right:66.6666666667%}.pull-9{margin-right:75%}.pull-10{margin-right:83.3333333333%}.pull-11{margin-right:91.6666666667%}.pull-12{margin-right:100%}@media (max-width: 1024px){.col-d-0{width:0%}.col-d-1{width:8.3333333333%}.col-d-2{width:16.6666666667%}.col-d-3{width:25%}.col-d-4{width:33.3333333333%}.col-d-5{width:41.6666666667%}.col-d-6{width:50%}.col-d-7{width:58.3333333333%}.col-d-8{width:66.6666666667%}.col-d-9{width:75%}.col-d-10{width:83.3333333333%}.col-d-11{width:91.6666666667%}.col-d-12{width:100%}.push-d-0{margin-left:0%}.push-d-1{margin-left:8.3333333333%}.push-d-2{margin-left:16.6666666667%}.push-d-3{margin-left:25%}.push-d-4{margin-left:33.3333333333%}.push-d-5{margin-left:41.6666666667%}.push-d-6{margin-left:50%}.push-d-7{margin-left:58.3333333333%}.push-d-8{margin-left:66.6666666667%}.push-d-9{margin-left:75%}.push-d-10{margin-left:83.3333333333%}.push-d-11{margin-left:91.6666666667%}.push-d-12{margin-left:100%}.pull-d-0{margin-right:0%}.pull-d-1{margin-right:8.3333333333%}.pull-d-2{margin-right:16.6666666667%}.pull-d-3{margin-right:25%}.pull-d-4{margin-right:33.3333333333%}.pull-d-5{margin-right:41.6666666667%}.pull-d-6{margin-right:50%}.pull-d-7{margin-right:58.3333333333%}.pull-d-8{margin-right:66.6666666667%}.pull-d-9{margin-right:75%}.pull-d-10{margin-right:83.3333333333%}.pull-d-11{margin-right:91.6666666667%}.pull-d-12{margin-right:100%}}@media (max-width: 768px){.col-t-0{width:0%}.col-t-1{width:8.3333333333%}.col-t-2{width:16.6666666667%}.col-t-3{width:25%}.col-t-4{width:33.3333333333%}.col-t-5{width:41.6666666667%}.col-t-6{width:50%}.col-t-7{width:58.3333333333%}.col-t-8{width:66.6666666667%}.col-t-9{width:75%}.col-t-10{width:83.3333333333%}.col-t-11{width:91.6666666667%}.col-t-12{width:100%}.push-t-0{margin-left:0%}.push-t-1{margin-left:8.3333333333%}.push-t-2{margin-left:16.6666666667%}.push-t-3{margin-left:25%}.push-t-4{margin-left:33.3333333333%}.push-t-5{margin-left:41.6666666667%}.push-t-6{margin-left:50%}.push-t-7{margin-left:58.3333333333%}.push-t-8{margin-left:66.6666666667%}.push-t-9{margin-left:75%}.push-t-10{margin-left:83.3333333333%}.push-t-11{margin-left:91.6666666667%}.push-t-12{margin-left:100%}.pull-t-0{margin-right:0%}.pull-t-1{margin-right:8.3333333333%}.pull-t-2{margin-right:16.6666666667%}.pull-t-3{margin-right:25%}.pull-t-4{margin-right:33.3333333333%}.pull-t-5{margin-right:41.6666666667%}.pull-t-6{margin-right:50%}.pull-t-7{margin-right:58.3333333333%}.pull-t-8{margin-right:66.6666666667%}.pull-t-9{margin-right:75%}.pull-t-10{margin-right:83.3333333333%}.pull-t-11{margin-right:91.6666666667%}.pull-t-12{margin-right:100%}}@media (max-width: 576px){.col-m-0{width:0%}.col-m-1{width:8.3333333333%}.col-m-2{width:16.6666666667%}.col-m-3{width:25%}.col-m-4{width:33.3333333333%}.col-m-5{width:41.6666666667%}.col-m-6{width:50%}.col-m-7{width:58.3333333333%}.col-m-8{width:66.6666666667%}.col-m-9{width:75%}.col-m-10{width:83.3333333333%}.col-m-11{width:91.6666666667%}.col-m-12{width:100%}.push-m-0{margin-left:0%}.push-m-1{margin-left:8.3333333333%}.push-m-2{margin-left:16.6666666667%}.push-m-3{margin-left:25%}.push-m-4{margin-left:33.3333333333%}.push-m-5{margin-left:41.6666666667%}.push-m-6{margin-left:50%}.push-m-7{margin-left:58.3333333333%}.push-m-8{margin-left:66.6666666667%}.push-m-9{margin-left:75%}.push-m-10{margin-left:83.3333333333%}.push-m-11{margin-left:91.6666666667%}.push-m-12{margin-left:100%}.pull-m-0{margin-right:0%}.pull-m-1{margin-right:8.3333333333%}.pull-m-2{margin-right:16.6666666667%}.pull-m-3{margin-right:25%}.pull-m-4{margin-right:33.3333333333%}.pull-m-5{margin-right:41.6666666667%}.pull-m-6{margin-right:50%}.pull-m-7{margin-right:58.3333333333%}.pull-m-8{margin-right:66.6666666667%}.pull-m-9{margin-right:75%}.pull-m-10{margin-right:83.3333333333%}.pull-m-11{margin-right:91.6666666667%}.pull-m-12{margin-right:100%}}@media (max-width: 1024px){.col-d-0{width:0%}.col-d-1{width:8.3333333333%}.col-d-2{width:16.6666666667%}.col-d-3{width:25%}.col-d-4{width:33.3333333333%}.col-d-5{width:41.6666666667%}.col-d-6{width:50%}.col-d-7{width:58.3333333333%}.col-d-8{width:66.6666666667%}.col-d-9{width:75%}.col-d-10{width:83.3333333333%}.col-d-11{width:91.6666666667%}.col-d-12{width:100%}.push-d-0{margin-left:0%}.push-d-1{margin-left:8.3333333333%}.push-d-2{margin-left:16.6666666667%}.push-d-3{margin-left:25%}.push-d-4{margin-left:33.3333333333%}.push-d-5{margin-left:41.6666666667%}.push-d-6{margin-left:50%}.push-d-7{margin-left:58.3333333333%}.push-d-8{margin-left:66.6666666667%}.push-d-9{margin-left:75%}.push-d-10{margin-left:83.3333333333%}.push-d-11{margin-left:91.6666666667%}.push-d-12{margin-left:100%}.pull-d-0{margin-right:0%}.pull-d-1{margin-right:8.3333333333%}.pull-d-2{margin-right:16.6666666667%}.pull-d-3{margin-right:25%}.pull-d-4{margin-right:33.3333333333%}.pull-d-5{margin-right:41.6666666667%}.pull-d-6{margin-right:50%}.pull-d-7{margin-right:58.3333333333%}.pull-d-8{margin-right:66.6666666667%}.pull-d-9{margin-right:75%}.pull-d-10{margin-right:83.3333333333%}.pull-d-11{margin-right:91.6666666667%}.pull-d-12{margin-right:100%}}@media (max-width: 768px){.col-t-0{width:0%}.col-t-1{width:8.3333333333%}.col-t-2{width:16.6666666667%}.col-t-3{width:25%}.col-t-4{width:33.3333333333%}.col-t-5{width:41.6666666667%}.col-t-6{width:50%}.col-t-7{width:58.3333333333%}.col-t-8{width:66.6666666667%}.col-t-9{width:75%}.col-t-10{width:83.3333333333%}.col-t-11{width:91.6666666667%}.col-t-12{width:100%}.push-t-0{margin-left:0%}.push-t-1{margin-left:8.3333333333%}.push-t-2{margin-left:16.6666666667%}.push-t-3{margin-left:25%}.push-t-4{margin-left:33.3333333333%}.push-t-5{margin-left:41.6666666667%}.push-t-6{margin-left:50%}.push-t-7{margin-left:58.3333333333%}.push-t-8{margin-left:66.6666666667%}.push-t-9{margin-left:75%}.push-t-10{margin-left:83.3333333333%}.push-t-11{margin-left:91.6666666667%}.push-t-12{margin-left:100%}.pull-t-0{margin-right:0%}.pull-t-1{margin-right:8.3333333333%}.pull-t-2{margin-right:16.6666666667%}.pull-t-3{margin-right:25%}.pull-t-4{margin-right:33.3333333333%}.pull-t-5{margin-right:41.6666666667%}.pull-t-6{margin-right:50%}.pull-t-7{margin-right:58.3333333333%}.pull-t-8{margin-right:66.6666666667%}.pull-t-9{margin-right:75%}.pull-t-10{margin-right:83.3333333333%}.pull-t-11{margin-right:91.6666666667%}.pull-t-12{margin-right:100%}}@media (max-width: 576px){.col-m-0{width:0%}.col-m-1{width:8.3333333333%}.col-m-2{width:16.6666666667%}.col-m-3{width:25%}.col-m-4{width:33.3333333333%}.col-m-5{width:41.6666666667%}.col-m-6{width:50%}.col-m-7{width:58.3333333333%}.col-m-8{width:66.6666666667%}.col-m-9{width:75%}.col-m-10{width:83.3333333333%}.col-m-11{width:91.6666666667%}.col-m-12{width:100%}.push-m-0{margin-left:0%}.push-m-1{margin-left:8.3333333333%}.push-m-2{margin-left:16.6666666667%}.push-m-3{margin-left:25%}.push-m-4{margin-left:33.3333333333%}.push-m-5{margin-left:41.6666666667%}.push-m-6{margin-left:50%}.push-m-7{margin-left:58.3333333333%}.push-m-8{margin-left:66.6666666667%}.push-m-9{margin-left:75%}.push-m-10{margin-left:83.3333333333%}.push-m-11{margin-left:91.6666666667%}.push-m-12{margin-left:100%}.pull-m-0{margin-right:0%}.pull-m-1{margin-right:8.3333333333%}.pull-m-2{margin-right:16.6666666667%}.pull-m-3{margin-right:25%}.pull-m-4{margin-right:33.3333333333%}.pull-m-5{margin-right:41.6666666667%}.pull-m-6{margin-right:50%}.pull-m-7{margin-right:58.3333333333%}.pull-m-8{margin-right:66.6666666667%}.pull-m-9{margin-right:75%}.pull-m-10{margin-right:83.3333333333%}.pull-m-11{margin-right:91.6666666667%}.pull-m-12{margin-right:100%}}@media (max-width: 1024px){.col-d-0{width:0%}.col-d-1{width:8.3333333333%}.col-d-2{width:16.6666666667%}.col-d-3{width:25%}.col-d-4{width:33.3333333333%}.col-d-5{width:41.6666666667%}.col-d-6{width:50%}.col-d-7{width:58.3333333333%}.col-d-8{width:66.6666666667%}.col-d-9{width:75%}.col-d-10{width:83.3333333333%}.col-d-11{width:91.6666666667%}.col-d-12{width:100%}.push-d-0{margin-left:0%}.push-d-1{margin-left:8.3333333333%}.push-d-2{margin-left:16.6666666667%}.push-d-3{margin-left:25%}.push-d-4{margin-left:33.3333333333%}.push-d-5{margin-left:41.6666666667%}.push-d-6{margin-left:50%}.push-d-7{margin-left:58.3333333333%}.push-d-8{margin-left:66.6666666667%}.push-d-9{margin-left:75%}.push-d-10{margin-left:83.3333333333%}.push-d-11{margin-left:91.6666666667%}.push-d-12{margin-left:100%}.pull-d-0{margin-right:0%}.pull-d-1{margin-right:8.3333333333%}.pull-d-2{margin-right:16.6666666667%}.pull-d-3{margin-right:25%}.pull-d-4{margin-right:33.3333333333%}.pull-d-5{margin-right:41.6666666667%}.pull-d-6{margin-right:50%}.pull-d-7{margin-right:58.3333333333%}.pull-d-8{margin-right:66.6666666667%}.pull-d-9{margin-right:75%}.pull-d-10{margin-right:83.3333333333%}.pull-d-11{margin-right:91.6666666667%}.pull-d-12{margin-right:100%}}@media (max-width: 768px){.col-t-0{width:0%}.col-t-1{width:8.3333333333%}.col-t-2{width:16.6666666667%}.col-t-3{width:25%}.col-t-4{width:33.3333333333%}.col-t-5{width:41.6666666667%}.col-t-6{width:50%}.col-t-7{width:58.3333333333%}.col-t-8{width:66.6666666667%}.col-t-9{width:75%}.col-t-10{width:83.3333333333%}.col-t-11{width:91.6666666667%}.col-t-12{width:100%}.push-t-0{margin-left:0%}.push-t-1{margin-left:8.3333333333%}.push-t-2{margin-left:16.6666666667%}.push-t-3{margin-left:25%}.push-t-4{margin-left:33.3333333333%}.push-t-5{margin-left:41.6666666667%}.push-t-6{margin-left:50%}.push-t-7{margin-left:58.3333333333%}.push-t-8{margin-left:66.6666666667%}.push-t-9{margin-left:75%}.push-t-10{margin-left:83.3333333333%}.push-t-11{margin-left:91.6666666667%}.push-t-12{margin-left:100%}.pull-t-0{margin-right:0%}.pull-t-1{margin-right:8.3333333333%}.pull-t-2{margin-right:16.6666666667%}.pull-t-3{margin-right:25%}.pull-t-4{margin-right:33.3333333333%}.pull-t-5{margin-right:41.6666666667%}.pull-t-6{margin-right:50%}.pull-t-7{margin-right:58.3333333333%}.pull-t-8{margin-right:66.6666666667%}.pull-t-9{margin-right:75%}.pull-t-10{margin-right:83.3333333333%}.pull-t-11{margin-right:91.6666666667%}.pull-t-12{margin-right:100%}}@media (max-width: 576px){.col-m-0{width:0%}.col-m-1{width:8.3333333333%}.col-m-2{width:16.6666666667%}.col-m-3{width:25%}.col-m-4{width:33.3333333333%}.col-m-5{width:41.6666666667%}.col-m-6{width:50%}.col-m-7{width:58.3333333333%}.col-m-8{width:66.6666666667%}.col-m-9{width:75%}.col-m-10{width:83.3333333333%}.col-m-11{width:91.6666666667%}.col-m-12{width:100%}.push-m-0{margin-left:0%}.push-m-1{margin-left:8.3333333333%}.push-m-2{margin-left:16.6666666667%}.push-m-3{margin-left:25%}.push-m-4{margin-left:33.3333333333%}.push-m-5{margin-left:41.6666666667%}.push-m-6{margin-left:50%}.push-m-7{margin-left:58.3333333333%}.push-m-8{margin-left:66.6666666667%}.push-m-9{margin-left:75%}.push-m-10{margin-left:83.3333333333%}.push-m-11{margin-left:91.6666666667%}.push-m-12{margin-left:100%}.pull-m-0{margin-right:0%}.pull-m-1{margin-right:8.3333333333%}.pull-m-2{margin-right:16.6666666667%}.pull-m-3{margin-right:25%}.pull-m-4{margin-right:33.3333333333%}.pull-m-5{margin-right:41.6666666667%}.pull-m-6{margin-right:50%}.pull-m-7{margin-right:58.3333333333%}.pull-m-8{margin-right:66.6666666667%}.pull-m-9{margin-right:75%}.pull-m-10{margin-right:83.3333333333%}.pull-m-11{margin-right:91.6666666667%}.pull-m-12{margin-right:100%}}img[data-action="zoom"]{cursor:pointer;cursor:-webkit-zoom-in;cursor:-moz-zoom-in}.zoom-img,.zoom-img-wrap{position:relative;z-index:666;-webkit-transition:all 300ms;-o-transition:all 300ms;transition:all 300ms}img.zoom-img{cursor:pointer;cursor:-webkit-zoom-out;cursor:-moz-zoom-out}.zoom-overlay{z-index:420;background:var(--background-color);position:fixed;top:0;left:0;right:0;bottom:0;pointer-events:none;opacity:0;-webkit-transition:opacity 300ms;-o-transition:opacity 300ms;transition:opacity 300ms}.zoom-overlay-open .zoom-overlay{opacity:1}.zoom-overlay-open,.zoom-overlay-transitioning{cursor:default}.animate{animation:animateElement cubic-bezier(0.3, 0.45, 0.45, 0.95) 0.75s;animation-duration:0.5s;animation-iteration-count:1;transition:transform .15s}@keyframes animateElement{0%{transform:translate(0px, 50px)}100%{transform:translate(0px, 0px)}}*,*::after,*::before{box-sizing:border-box}body{font-family:"Work Sans",Helvetica Neue,Helvetica,Arial,sans-serif;font-size:20px;line-height:1.5;color:var(--text-color);background-color:var(--background-color);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;transition:all .25s}@media only screen and (max-width: 1024px){body{font-size:18px}}@media only screen and (max-width: 576px){body{font-size:16px}}*::selection{color:var(--white);background-color:var(--brand-color)}h1,h2,h3,h4,h5,h6{font-family:"Work Sans",Helvetica Neue,Helvetica,Arial,sans-serif;font-weight:900;line-height:1.3;color:var(--heading-font-color)}h1{font-size:36px}h2{font-size:28px}h3{font-size:24px}h4{font-size:20px}h5{font-size:18px}h6{font-size:16px}blockquote{position:relative;padding:36px 0;margin:36px -100px;font-size:32px;line-height:1;font-weight:700;font-style:italic;text-align:center;color:var(--heading-font-color)}blockquote::after,blockquote::before{content:"";position:absolute;display:block;width:100%;height:1px;border-top:1px dashed var(--text-color)}blockquote::after{top:0}blockquote::before{bottom:0}blockquote p{margin-bottom:10px}blockquote cite{display:inline-block;margin-top:8px;font-size:14px;font-weight:900;font-style:italic;color:var(--heading-font-color)}blockquote cite::after,blockquote cite::before{content:" – "}@media only screen and (max-width: 1140px){blockquote{margin:68px -90px;font-size:40px}}@media only screen and (max-width: 1024px){blockquote{padding:48px 0;margin:48px 0;font-size:28px}}@media only screen and (max-width: 576px){blockquote{padding:40px 0;margin:40px 0;font-size:21px}}pre{overflow:auto;padding:15px;margin-bottom:0;font-size:14px;white-space:pre-wrap;word-wrap:break-word;word-break:break-all;color:var(--heading-font-color)}img,.zoom-img-wrap{max-width:100%;height:auto;vertical-align:middle}img+em,.zoom-img-wrap+em,.gallery+em{display:block;margin-top:20px;font-size:14px;line-height:22px;font-style:normal;font-weight:normal;text-align:center;color:var(--heading-font-color)}img+em a,.zoom-img-wrap+em a,.gallery+em a{font-weight:700;border-bottom:3px solid var(--border-color);transition:all 0.35s}img+em a:hover,.zoom-img-wrap+em a:hover,.gallery+em a:hover{color:var(--link-color-hover);border-color:transparent}@media only screen and (max-width: 576px){img+em,.zoom-img-wrap+em,.gallery+em{margin-top:12px}}a{text-decoration:none;color:var(--link-color);transition:all 0.35s}a:hover{color:var(--link-color) -hover}hr{position:relative;height:1px;margin:60px 0;border:0}hr::before{content:". . .";position:absolute;top:-5px;line-height:0;color:var(--heading-font-color)}.table-container{display:block;max-width:100%;overflow-x:auto}table{font-size:12px;color:var(--dark);width:100%;border-width:1px;border-color:var(--background-alt-color);border-collapse:collapse;color:var(--heading-font-color)}table th{padding:10px;font-size:16px;text-align:left;border:1px solid var(--background-alt-color);color:var(--white);font-weight:700;background-color:var(--background-alt-color)}table tr{background-color:var(--tr-color);transition:all .3s ease}table tr:nth-child(even){background-color:transparent}table td{padding:10px;font-size:14px;border:1px solid var(--background-alt-color)}.button{display:inline-block;padding:20px 40px;font-size:14px;font-weight:700;text-decoration:none;border-radius:4px;border:none;color:var(--white);background-color:var(--button-background-color);outline:none;cursor:pointer;transition:all .25s}.button:hover{background:var(--button-background-hover)}.button:active{transform:translateY(2px)}.top{position:fixed;bottom:36px;right:-100px;z-index:1;width:36px;height:36px;font-size:28px;line-height:39px;text-align:center;border-radius:14px;background-color:var(--background-alt-color);color:var(--light-gray);cursor:pointer;transition:all .25s ease;box-shadow:0px 0px 20px rgba(0,0,0,0.05)}.top:hover{color:var(--white);background-color:var(--brand-color)}.top.is-active{right:36px}@media only screen and (max-width: 1024px){.top{bottom:24px}.top.is-active{right:28px}}.header{background:var(--background-color)}.header__inner{position:relative;display:flex;align-items:center;flex-wrap:wrap;padding:60px 16px}@media only screen and (max-width: 768px){.header__inner{padding:40px 16px}}.logo__link{padding:4px 0;font-size:15px;line-height:1;font-weight:900;text-transform:uppercase}.logo__link:hover{color:var(--brand-color)}.logo__image{max-height:50px}.main-nav{margin-left:auto}@media only screen and (max-width: 1024px){.main-nav{position:fixed;top:0;left:0;right:0;bottom:0;z-index:100;opacity:0;visibility:hidden;background-color:var(--background-color)}.main-nav.is-open{opacity:1;visibility:visible;transition:all .25s ease}.main-nav .nav__list{width:100%}.main-nav .nav__list .nav__item{display:block;margin:0}.main-nav .nav__list .nav__item:last-child{margin-right:0}.main-nav .nav__list .nav__item .nav__link{display:inline-block;padding:20px 0;font-size:15px}}.main-nav__box{display:flex;align-items:center}.main-nav__box .nav__icon-close{display:none;font-size:24px;text-align:right}.main-nav__box .nav__icon-close .ion-md-close{transition:all 0.35s;cursor:pointer}.main-nav__box .nav__icon-close .ion-md-close:hover{color:var(--brand-color)}.main-nav__box .nav__title{display:none}@media only screen and (max-width: 1024px){.main-nav__box{display:block;align-items:center;width:80%;height:80vh;padding-top:180px;margin:0 auto;text-align:center;overflow-y:auto}.main-nav__box .nav__icon-close{display:block;position:absolute;top:40px;right:40px;font-size:32px;line-height:1}.main-nav__box .nav__title{display:inline-block;padding:16px 32px;margin-bottom:32px;font-size:24px;font-weight:900;border-radius:4px;color:var(--heading-font-color);border:2px solid var(--heading-font-color);box-shadow:8px 8px 0 var(--heading-font-color)}}@media only screen and (max-width: 768px){.main-nav__box{padding-top:100px}}.nav__list .nav__item{display:inline-block;margin-right:36px;margin-bottom:0}.nav__list .nav__item:last-child{margin-right:44px}.nav__list .nav__item .nav__link{padding:4px;font-size:13px;line-height:15px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase}.nav__list .nav__item .nav__link:hover{color:var(--brand-color)}.nav-buttons{display:flex;align-items:center;font-size:21px;color:var(--link-color);cursor:pointer}.nav-buttons .nav__icon{transition:all 0.35s}.nav-buttons .nav__icon:hover{color:var(--brand-color)}.nav-buttons .nav__icon:first-child{margin-right:15px}.nav-buttons .nav__icon-menu{display:none}@media only screen and (max-width: 1024px){.nav-buttons{margin-left:auto;font-size:24px}.nav-buttons .nav__icon-menu{display:block}}.search{position:fixed;top:0;left:0;right:0;bottom:0;z-index:-1;overflow:auto;opacity:0;background:var(--background-color);transition:all .25s ease}.search.is-visible{z-index:100;opacity:1;transition:all .25s ease}.search__box{margin:0 auto;padding-top:140px}@media only screen and (max-width: 1024px){.search__box{padding-top:100px}}.search__group{position:relative;margin-bottom:60px}.search__group .search__close{position:absolute;right:25px;top:50%;transform:translateY(-50%);font-size:28px;line-height:1;color:var(--heading-font-color);cursor:pointer;transition:all .25s}.search__group .search__close i{vertical-align:middle}.search__group .search__close:hover{color:var(--brand-color)}.search__group .search__text{width:100%;padding:24px;font-size:24px;font-weight:700;line-height:28px;border:2px solid var(--heading-font-color);border-radius:4px;color:var(--heading-font-color);background-color:var(--background-color);box-shadow:8px 8px 0 var(--heading-font-color);outline:none;transition:all .25s}.search__group .search__text::placeholder{font-weight:700;color:var(--heading-font-color)}.search__group .search__text::-ms-clear{display:none}@media only screen and (max-width: 576px){.search__group .search__text{padding:20px;font-size:20px}}.search-results-list{height:64vh;overflow:auto}.search-results-list .no-results{width:100%;font-size:32px;text-align:center;color:var(--heading-font-color)}.pagination__inner{display:flex;justify-content:center;align-items:center;padding:40px 0;border-top:1px solid var(--border-color);border-bottom:1px solid var(--border-color)}@media only screen and (max-width: 576px){.pagination__inner{padding:32px 0}}.pagination__list{display:flex;justify-content:space-between;align-items:center;width:100%;font-size:14px;font-weight:700;line-height:1;text-transform:uppercase;color:var(--text-color)}.pagination__count{display:inline-block;padding:0 15px;margin:0 15px;font-size:13px;color:var(--text-alt-color)}.pagination__next i,.pagination__prev i{font-size:13px}.pagination__next:hover,.pagination__prev:hover{color:var(--brand-color)}.pagination__next.disabled,.pagination__prev.disabled{opacity:0.4;cursor:not-allowed;color:inherit}.pagination__next i{margin-left:4px}.pagination__prev i{margin-right:4px}.footer{margin-top:96px;background:var(--background-alt-color);left:0;bottom:0;width:100%;position:fixed}.footer .row .col{flex-grow:1}.footer .footer__inner{position:relative;padding:4px 0}.footer .footer__inner .col{position:relative;padding:0 40px}.footer .footer__inner .col::after{content:"";position:absolute;top:50%;left:0;transform:translateY(-50%);display:block;width:1px;height:100px;background-color:var(--border-color-alt)}.footer .footer__inner .col:first-child{padding:0 40px 0 16px}.footer .footer__inner .col:first-child::after{content:none}@media only screen and (max-width: 1024px){.footer .footer__inner .col:nth-child(2){padding:0 16px 0 40px}}@media only screen and (max-width: 768px){.footer .footer__inner .col:nth-child(2){padding:0 16px}}.footer .footer__inner .col:last-child{padding:0 16px 0 40px}@media only screen and (max-width: 1024px){.footer .footer__inner .col:last-child{padding:0 16px}.footer .footer__inner .col:last-child::after{content:none}}@media only screen and (max-width: 768px){.footer .footer__inner .col{padding:0 16px}.footer .footer__inner .col::after{content:none}}@media only screen and (max-width: 1024px){.footer .row .col:last-child>.widget{margin-bottom:0}}@media only screen and (max-width: 768px){.footer{margin-top:60px}}@media only screen and (max-width: 1024px){.widget{margin-bottom:40px}}.widget__head{margin-bottom:32px}.widget__head .widget__title{margin:0;font-size:20px;text-transform:uppercase;color:var(--light-gray)}.widget-info .footer-logo .footer-logo__link{font-size:20px;font-weight:900;line-height:1.3;text-transform:uppercase;color:var(--light-gray)}.widget-info .footer-text{margin:0;font-size:14px;color:var(--text-alt-color)}.widget-info .social{margin-top:40px}.widget-info .social .social__list{display:flex;align-items:center;flex-wrap:wrap}.widget-info .social .social__item{margin-right:8px;margin-bottom:8px}.widget-info .social .social__link{display:flex;justify-content:center;align-items:center;width:40px;height:40px;font-size:16px;color:var(--light-gray);border:1px solid var(--border-color-alt);border-radius:14px;transition:all .25s}.widget-info .social .social__link:hover{transform:translate3d(3px, -3px, 0);box-shadow:-3px 3px 0 var(--light-gray)}.widget-subscribe .subscribe__inner{display:flex;flex-direction:column;justify-content:space-between}.widget-subscribe .subscribe__group{margin-bottom:32px}.widget-subscribe .subscribe__group .subscribe__title{margin-bottom:15px;color:var(--light-gray)}.widget-subscribe .subscribe__group .subscribe__description{font-size:14px;color:var(--text-alt-color)}.widget-subscribe .subscribe-form{position:relative;height:60px}.widget-subscribe .subscribe-form .subscribe-email{width:100%;height:100%;padding:16px;font-size:14px;line-height:19px;font-weight:700;color:var(--light-gray);border:2px solid var(--border-color-alt);border-radius:4px;background:transparent;transition:.25s ease-in-out;outline:0}.widget-subscribe .subscribe-form .subscribe-email::placeholder{color:var(--text-alt-color);font-weight:500}.widget-subscribe .subscribe-form .subscribe-email:focus{color:var(--light-gray);border-color:var(--brand-color)}.widget-subscribe .subscribe-form .subscribe-button{position:absolute;top:8px;right:8px;display:inline-block;height:44px;padding:0 28px;font-size:14px;font-weight:700;border:none;border-radius:4px;outline:none;color:var(--dark);background:var(--light-gray);transition:all 0.3s;cursor:pointer}.widget-subscribe .subscribe-form .subscribe-button:hover{color:var(--white);background:var(--button-background-hover)}@media only screen and (max-width: 1130px){.widget-subscribe .subscribe-form .subscribe-email{font-size:13px}.widget-subscribe .subscribe-form .subscribe-button{font-size:14px}}.tag__cloud{display:flex;align-items:center;flex-wrap:wrap}.tag__cloud a{padding:8px 16px;margin-right:4px;margin-bottom:4px;font-size:11px;line-height:1;font-weight:500;text-transform:uppercase;border:2px solid var(--border-color-alt);border-radius:30px;color:var(--text-alt-color)}.tag__cloud a:hover{color:var(--light-gray);border-color:var(--brand-color)}.tag__cloud a:last-child{margin-right:0}.footer_spacer{clear:both;height:32px}.footer__info{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;padding:10px 0;border-top:1px solid var(--border-color-alt)}@media only screen and (max-width: 576px){.footer__info{flex-direction:column;align-items:flex-start}}.copyright{font-size:11px;font-weight:500;text-transform:uppercase;color:var(--text-alt-color)}.copyright a{color:var(--light-gray);font-weight:700}.copyright a:hover{color:var(--brand-color)}.toggle-theme{position:relative;display:flex;width:45px;height:24px;border-radius:30px;background-color:var(--border-color-alt);user-select:none;cursor:pointer}@media only screen and (max-width: 576px){.toggle-theme{margin-top:12px}}.toggle-sun,.toggle-moon{display:flex;justify-content:center;align-items:center;width:50%;font-size:16px;color:var(--light-gray)}.toggle-moon{transform:translateX(1px)}.toggle-thumb{position:absolute;top:2px;left:2px;width:20px;height:20px;background-color:var(--light-gray);border-radius:50%;transition:transform 0.5s cubic-bezier(0.23, 1, 0.32, 1)}.dark-mode .toggle-thumb{transform:translateX(21px)}.gallery-box{margin:40px 0}.gallery{display:grid;grid-template-columns:repeat(3, auto);justify-content:center;align-content:center;grid-gap:10px}.gallery .gallery__image{background:var(--background-color)}.gallery .gallery__image img{display:block;width:100%;height:auto;object-fit:cover}.hero{margin-bottom:96px}@media only screen and (max-width: 768px){.hero{margin-bottom:60px;margin-left:16px;margin-right:16px}}@media only screen and (max-width: 576px){.hero{margin-bottom:48px;margin-left:16px;margin-right:16px}}.hero__inner{display:flex;align-items:center}@media only screen and (max-width: 1024px){.hero__inner{flex-direction:column}}.hero__left{position:relative;margin-right:68px}.hero__left .hero__image{position:relative;z-index:10;width:680px;height:280px;margin:0 auto;border-radius:2px;overflow:hidden;user-select:none}.hero__left .hero__image img{position:absolute;top:0;z-index:1;height:100%;width:100%;object-fit:cover}@media only screen and (max-width: 1140px){.hero__left{margin-right:60px}}@media only screen and (max-width: 1024px){.hero__left{width:100%;margin-right:0;order:-1}.hero__left .hero__image{width:100%;height:240px;margin-bottom:48px}}@media only screen and (max-width: 768px){.hero__left .hero__image{height:200px;margin-bottom:40px}}@media only screen and (max-width: 576px){.hero__left .hero__image{height:180px;margin-bottom:32px;box-shadow:none}}.hero__right .hero__title{margin-bottom:32px;font-size:68px;line-height:.85em;font-weight:900;letter-spacing:-1px;text-transform:uppercase;color:var(--heading-font-color)}@media only screen and (max-width: 1140px){.hero__right .hero__title{font-size:60px}}@media only screen and (max-width: 1024px){.hero__right .hero__title{margin-bottom:32px;font-size:48px;letter-spacing:normal}}@media only screen and (max-width: 576px){.hero__right .hero__title{margin-bottom:24px;font-size:32px}}.hero__right .hero__description{max-width:530px;margin-bottom:32px;font-size:20px;color:var(--text-color)}@media only screen and (max-width: 1024px){.hero__right .hero__description{max-width:100%;margin-bottom:24px;font-size:inherit}}.hero__right .hero__contact .social__list{display:flex;align-items:center;flex-wrap:wrap}.hero__right .hero__contact .social__item{margin-right:8px;margin-bottom:0}.hero__right .hero__contact .social__item:last-child{margin-right:0}.hero__right .hero__contact .social__link{display:flex;justify-content:center;align-items:center;width:43px;height:43px;text-align:center;font-size:20px;border-radius:14px;border:1px solid var(--border-color);color:var(--heading-font-color);background:var(--background-color);transition:all .25s}.hero__right .hero__contact .social__link i{line-height:49px}.hero__right .hero__contact .social__link:hover{transform:translate3d(3px, -3px, 0);box-shadow:-3px 3px 0 var(--heading-font-color)}@media only screen and (max-width: 1024px){.hero__right .hero__contact .social__link{width:40px;height:40px;font-size:18px}}.contact-head{margin-bottom:32px}.form__group{margin-bottom:20px}.form__group:last-child{margin-bottom:0}.form__input{width:100%;padding:20px;font-size:14px;font-weight:500;border:1.5px solid var(--border-color);border-radius:2px;outline:none;transition:.25s ease-in-out;resize:vertical;color:var(--heading-font-color);background-color:var(--background-color)}.form__input::placeholder{color:var(--text-color)}.form__input:focus{border-color:var(--heading-font-color)}.article{margin-bottom:40px}@media only screen and (max-width: 576px){.article{margin-bottom:32px}}.article__title{margin-bottom:32px;font-size:36px;line-height:.72em}.article__title a:hover{color:var(--heading-font-color)}.article__title a:hover i{opacity:1;transform:translateX(3px)}.article__title a i{opacity:0;transition:0.2s linear}@media only screen and (max-width: 576px){.article__title{margin-bottom:28px;font-size:28px}.article__title a i{display:none}}.article__meta{margin-bottom:16px;font-size:12px;line-height:14px;font-weight:700;letter-spacing:2px;color:var(--heading-font-color)}@media only screen and (max-width: 576px){.article__meta{margin-bottom:20px}}.article__excerpt{margin-bottom:16px}@media only screen and (max-width: 576px){.article__excerpt{margin-bottom:20px}}.article-tags__box{display:flex;align-items:center;flex-wrap:wrap}.article__tag{padding:8px 16px;margin-right:4px;margin-bottom:4px;font-size:11px;line-height:13px;font-weight:500;text-transform:uppercase;border:2px solid var(--border-color);border-radius:30px;color:var(--text-alt-color)}.article__tag:last-child{margin-right:0}.article__tag:hover{color:var(--text-color)}.post,.page{max-width:780px;margin:0 auto;margin-bottom:60px;color:var(--text-color)}.post a,.page a{border-bottom:3px solid var(--border-color);transition:all 0.35s}.post a:hover,.page a:hover{color:var(--link-color-hover);border-color:transparent}.post .button,.page .button{border:none;text-decoration:none}.post .button:hover,.page .button:hover{color:var(--button-color)}.post-image,.page-image{position:relative;height:320px;margin-bottom:16px;border-radius:2px;overflow:hidden}.post-image img,.page-image img{position:absolute;top:0;width:100%;height:100%;border-radius:2px;object-fit:contain;user-select:none}@media only screen and (max-width: 1024px){.post-image,.page-image{height:320;margin-bottom:10px}}@media only screen and (max-width: 768px){.post-image,.page-image{height:300px}}@media only screen and (max-width: 576px){.post-image,.page-image{margin-bottom:32px;height:240px}}.post__info,.page__info{text-align:center;margin-bottom:48px}@media only screen and (max-width: 1024px){.post__info,.page__info{margin-bottom:40px}}@media only screen and (max-width: 576px){.post__info,.page__info{margin-bottom:32px}}.post__title,.page__title{margin-bottom:40px;font-size:48px;line-height:.85em}@media only screen and (max-width: 1140px){.post__title,.page__title{font-size:48px}}@media only screen and (max-width: 1024px){.post__title,.page__title{font-size:36px}}@media only screen and (max-width: 576px){.post__title,.page__title{margin-bottom:24px;font-size:32px}}.post__meta{font-size:12px;line-height:14px;font-weight:700;letter-spacing:2px;color:var(--heading-font-color)}.post__bottom{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;margin-top:48px;padding-bottom:48px;border-bottom:1px solid var(--border-color)}@media only screen and (max-width: 576px){.post__bottom{margin-top:40px;padding-bottom:40px}}.post__share .share__list{display:flex;align-items:center;flex-wrap:wrap;width:100%}.post__share .share__item{margin-right:8px;margin-bottom:0;margin:4px 8px 4px 0;text-align:center}.post__share .share__link{display:block;padding:12px 24px;font-size:11px;font-weight:500;text-transform:uppercase;border:none;border-radius:4px;color:var(--background-color) -alt}.post__share .share__link.share__facebook,.post__share .share__link.share__twitter{transition:all 0.35s}.post__share .share__link.share__facebook:hover,.post__share .share__link.share__twitter:hover{color:var(--white)}.post__share .share__link.share__facebook{color:var(--white);background:#3b5998}.post__share .share__link.share__facebook:hover{background:#344e86}.post__share .share__link.share__twitter{color:var(--white);background:#55acee}.post__share .share__link.share__twitter:hover{background:#3ea1ec}.post__tags{display:flex;align-items:center;flex-wrap:wrap}.post__tags .post__tag{padding:12px 24px;margin:4px 8px 4px 0;font-size:11px;line-height:13px;font-weight:500;text-transform:uppercase;border:none;border-radius:4px;color:var(--text-alt-color);background-color:var(--light-gray)}.post__tags .post__tag:last-child{margin-right:0}.post__tags .post__tag:hover{color:var(--dark)}.post-author{display:flex;align-items:center;padding:40px 0;margin-bottom:68px;border-bottom:1px solid var(--border-color)}.post-author .post-author__image{position:relative;display:block;min-width:132px;height:132px;margin-right:20px;border-radius:50%;border:none;overflow:hidden;text-decoration:none}.post-author .post-author__image img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover}.post-author .post-author__name{margin-bottom:12px;font-weight:700;font-size:20px;text-transform:uppercase;line-height:1}.post-author .post-author__name:hover a{color:var(--heading-font-color)}.post-author .post-author__name a{border:none}.post-author .post-author__bio{font-size:18px;margin-bottom:0}.post-author .post-author__meta{display:flex;line-height:initial}@media only screen and (max-width: 1024px){.post-author .post-author__bio{font-size:16px}}@media only screen and (max-width: 576px){.post-author{flex-direction:column;align-items:center;text-align:center;margin-bottom:40px}}@media only screen and (max-width: 768px){.post-author{flex-direction:column;text-align:center}.post-author .post-author__image,.post-author .post-author__name{margin-bottom:16px}.post-author .post-author__image{margin-right:0}.post-author .post-author__meta{justify-content:center}}.error{margin-bottom:0;text-align:center}.error .error__title{margin-bottom:24px;font-size:100px;line-height:1}.error .error__text{margin-bottom:48px;color:var(--text-alt-color)}@media only screen and (max-width: 576px){.error .error__title{font-size:68px}.error .error__title{font-size:80px}.error .error__text{margin-bottom:24px}}.tag{padding:96px 0 96px;margin-bottom:96px;border-radius:2px;overflow:hidden;background-size:contain;background-position:center;background-repeat:no-repeat;background-color:var(--text-color)}.tag .tag__inner{display:inline-flex;align-items:center;border-radius:4px;overflow:hidden;background-color:var(--white)}.tag .tag__title{margin:0;padding:16px 32px;font-size:28px;font-weight:900;color:var(--dark-blue);text-transform:uppercase}.tag .tag__counter{display:flex;align-items:center;flex-direction:column;padding:16px 32px;background:var(--white);border-left:1px solid var(--dark-blue);color:var(--dark-blue)}.tag .tag__counter span{font-size:40px;line-height:1;font-weight:900}.tag .tag__counter small{font-size:14px;font-weight:500;text-transform:uppercase}@media only screen and (max-width: 1024px){.tag .tag__inner{display:flex;margin:0 32px}.tag .tag__title{flex-grow:1}}@media only screen and (max-width: 768px){.tag{padding:60px 0;margin-bottom:60px}.tag .tag__title{font-size:28px}}@media only screen and (max-width: 576px){.tag{padding:48px 0;margin-bottom:48px}.tag .tag__inner{margin:0 24px}.tag .tag__title{font-size:20px}.tag .tag__counter{display:none}}
+
+  </style>
+</head>
+
+<body>
+
+  
+
+    <!-- begin header -->
+<header class="header">
+  <div class="container">
+    <div class="row">
+      <div class="header__inner col col-12">
+
+        <!-- <div class="logo">
+          <a class="logo__link" href="/">
+          
+            <img class="logo__image" src="/images/favicon.png" alt="aci.codes">
+          
+          </a>
+        </div> -->
+
+        <nav class="main-nav">
+          <div class="main-nav__box">
+            <div class="nav__icon-close">
+              <i class="ion ion-md-close"></i>
+            </div>
+            <div class="nav__title">Menu</div>
+            <ul class="nav__list list-reset">
+              
+                
+              
+                
+                  
+                  <li class="nav__item">
+                    <a href="/about/" class="nav__link">About [DRAFT]</a>
+                  </li>
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                  <li class="nav__item">
+                    <a href="/index.html" class="nav__link">aci.codes</a>
+                  </li>
+                  
+                
+              
+            </ul>
+          </div>
+        </nav>
+
+        <div class="nav-buttons">
+          <i class="nav__icon nav__icon-menu ion ion-md-menu"></i>
+          <i class="nav__icon nav__icon-search ion ion-md-search"></i>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</header>
+<!-- end header -->
+
+<!-- begin search -->
+<div class="search">
+
+  <div class="container">
+    <div class="row">
+      <div class="col col-8 push-2 col-d-12 push-d-0">
+        <div class="search__box">
+          <div class="search__group">
+            <div class="search__close">
+              <i class="ion ion-md-close"></i>
+            </div>
+            <label for="js-search-input" class="screen-reader-text">Search for Blog</label>
+            <input type="text" id="js-search-input" class="search__text" autocomplete="off" placeholder="Type to search...">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col col-8 push-2 col-d-12 push-d-0">
+        <div class="row search-results-list" id="js-results-container"></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<!-- end search -->
+
+    <!-- begin content -->
+    <main class="content" aria-label="Content">
+      
+<div class="container">
+  <div class="row">
+    <div class="col col-12">
+      <div class="post-image">
+        <img src="/images/posts/learning-kotlin.png" alt="Hello Kotlin, from a Swift Developer">
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- begin post -->
+<div class="container animate">
+
+  <div class="post__info">
+    <h1 class="post__title">Hello Kotlin, from a Swift Developer</h1>
+    <div class="post__meta">
+      <time class="post__date" datetime="2021-12-10T11:12:35+11:00">10 December 2021</time> – <span class="post__minutes">  23 min read 
+      </span>
+    </div>
+  </div>
+
+  <article class="post">
+
+    <div class="post__content">
+      <h1 id="kotlin">Kotlin</h1>
+
+<p>This is more of a reference style notes similar to <a href="https://learnxinyminutes.com">learnxiny.com</a>. The formatting is not nice since I wrote this in Notion and copied it here as well. It’s cool to see the similarities between Swift and Kotlin.</p>
+
+<h2 id="class">Class</h2>
+
+<h3 id="constructor--init">Constructor / Init</h3>
+
+<p>A constructor runs when you instantiate an object. It’s used to define properties and initialize them</p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 1. properties in constructor is initialised first</span>
+<span class="kd">class</span> <span class="nc">Dog</span><span class="p">(</span><span class="kd">val</span> <span class="py">name_param</span><span class="p">:</span> <span class="nc">String</span><span class="p">,</span> <span class="kd">var</span> <span class="py">weight_param</span><span class="p">:</span> <span class="nc">Int</span><span class="p">,</span> <span class="kd">val</span> <span class="py">breed_param</span><span class="p">:</span> <span class="nc">String</span><span class="p">)</span> <span class="p">{</span>
+ <span class="c1">// properties in main body</span>
+    <span class="kd">val</span> <span class="py">name</span> <span class="p">=</span> <span class="n">name_param</span>
+    <span class="kd">val</span> <span class="py">weight</span> <span class="p">=</span> <span class="n">weight_param</span>
+    <span class="kd">val</span> <span class="py">breed</span> <span class="p">=</span> <span class="n">breed_param</span>
+
+    <span class="k">lateinit</span> <span class="kd">var</span> <span class="py">temperament</span><span class="p">:</span> <span class="nc">String</span>
+
+    <span class="c1">// extra code need to run, more complex property initializer</span>
+    <span class="nf">init</span> <span class="p">{</span>
+        <span class="c1">// 2. this init code runs after constructor</span>
+    <span class="p">}</span>
+
+    <span class="c1">// 3. created after 2.</span>
+    <span class="kd">var</span> <span class="py">activities</span> <span class="p">=</span> <span class="nf">arrayOf</span><span class="p">(</span><span class="s">"walks"</span><span class="p">)</span> 
+
+    <span class="nf">init</span> <span class="p">{</span>
+        <span class="c1">// 3. can have another init to run after 3</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Defining <strong>properties in the main body:</strong></p>
+
+<ul>
+  <li>flexibility</li>
+  <li>no need initialize with a parameter value</li>
+</ul>
+
+<p>initialize properties before you use them
+<strong>lateinit → lazy</strong> (can’t initialize from constructor)</p>
+
+<ul>
+  <li>needs to be <strong>var</strong></li>
+  <li>can’t use: Byte, Short, Int, Long, Double, Float, Char, or Boolean</li>
+</ul>
+
+<p><strong>empty constructor</strong> - compiler writes one for you</p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Duck</span><span class="p">()</span> <span class="p">{</span> <span class="p">}</span>
+<span class="kd">var</span> <span class="py">duck</span> <span class="p">=</span> <span class="nc">Duck</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h3 id="properties">Properties</h3>
+
+<p>custom getter/setters</p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">val</span> <span class="py">weightInKgs</span> <span class="p">=</span> <span class="nc">Double</span>
+ <span class="k">get</span><span class="p">()</span> <span class="p">=</span> <span class="n">weight</span><span class="p">/</span><span class="mf">2.2</span> <span class="c1">//gettter - no parameter function</span>
+
+ <span class="c1">// setter - runs each time you try to set the value</span>
+ <span class="k">set</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">value</span><span class="p">&gt;</span><span class="mi">0</span><span class="p">)</span> <span class="n">field</span> <span class="p">=</span> <span class="n">value</span> <span class="c1">// if value&lt;0 value won't be set</span>
+ <span class="p">}</span>
+
+<span class="cm">/* ---------------------------------------------------------------------- */</span>
+
+<span class="kd">var</span> <span class="py">myProperty</span><span class="p">:</span> <span class="nc">String</span>
+<span class="c1">// compiler secretly adds the ff:</span>
+<span class="kd">var</span> <span class="py">myProperty</span><span class="p">:</span> <span class="nc">String</span>
+    <span class="k">get</span><span class="p">()</span> <span class="p">=</span> <span class="n">field</span>
+    <span class="k">set</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">field</span> <span class="p">=</span> <span class="n">value</span>
+  <span class="p">}</span>
+<span class="c1">// data hiding - always calls getter &amp; setter when using dot operator</span>
+</code></pre></div></div>
+
+<p><strong>field</strong></p>
+
+<ul>
+  <li>property’s backing field</li>
+  <li>reference to underlying value of property</li>
+  <li>use in getter &amp; setter methods
+    <ul>
+      <li>stop getting stuck in an endless loop</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="inheritance">Inheritance</h3>
+
+<p>Don’t use inheritance if the <strong>IS-A</strong> test fails (just so you can reuse code)</p>
+
+<p><strong>open</strong></p>
+
+<ul>
+  <li>prefix explicitly tell compiler class can be used as a <em>superclass</em></li>
+  <li>prefix on properties that can be overriden</li>
+</ul>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">open</span> <span class="kd">class</span> <span class="nc">Animal</span><span class="p">(</span><span class="n">type</span><span class="p">:</span> <span class="nc">String</span><span class="p">)</span> <span class="p">{</span>
+ <span class="k">open</span> <span class="kd">val</span> <span class="py">image</span> <span class="p">=</span> <span class="s">""</span>
+ <span class="kd">val</span> <span class="py">food</span> <span class="p">=</span> <span class="s">""</span>
+ 
+ <span class="k">open</span> <span class="k">fun</span> <span class="nf">makeNoise</span><span class="p">()</span> <span class="p">{</span> <span class="o">..</span><span class="p">.</span> <span class="p">}</span>
+ <span class="c1">// final stops override</span>
+ <span class="k">final</span> <span class="k">fun</span> <span class="nf">sleep</span><span class="p">()</span> <span class="p">{</span> <span class="o">..</span><span class="p">.</span> <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">Hippo</span><span class="p">(</span><span class="n">type</span><span class="p">:</span> <span class="nc">String</span><span class="p">):</span> <span class="nc">Animal</span><span class="p">(</span><span class="n">type</span><span class="p">)</span> <span class="p">{</span>
+ <span class="k">override</span> <span class="kd">val</span> <span class="py">image</span> <span class="p">=</span> <span class="s">"hippo.jpg"</span>
+ <span class="k">override</span> <span class="k">fun</span> <span class="nf">makeNoise</span><span class="p">()</span> <span class="p">{</span> <span class="o">..</span><span class="p">.</span> <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>subclass must call superclass primary constructor in header</li>
+  <li>override <strong>val</strong> in superclass with <strong>var</strong> in subclass</li>
+  <li>override a property’s type with its superclass</li>
+</ul>
+
+<h3 id="abstract-classes">Abstract classes</h3>
+
+<ul>
+  <li>prevents class from being instantiated</li>
+  <li>can contain abstract &amp; non-abstract properties and functions</li>
+  <li>make properties abstract so they  need to be overriden</li>
+  <li>abstract properties &amp; functions → common protocol (polymorphism)</li>
+  <li><strong>first</strong> <strong>concrete</strong> class below abstract superclass must implement all abstract properties &amp; functions</li>
+</ul>
+
+<h3 id="interface">Interface</h3>
+
+<ul>
+  <li>protocol for common behaviour</li>
+  <li>benefit from polymorphism without inheritance</li>
+  <li>can add concrete functions to interfaces (provide a function body)</li>
+  <li><strong>properties</strong> can’t store state
+    <ul>
+      <li>don’t have backing fields</li>
+    </ul>
+  </li>
+  <li>class can inherit from a single direct superclass, but can have multiple interfaces</li>
+  <li><strong>override</strong> interface methods &amp; properties in concrete class</li>
+</ul>
+
+<h3 id="when-to-use-which">When to use which</h3>
+
+<ul>
+  <li><strong>class</strong> - new class doesn’t pass the IS-A test for any other type.</li>
+  <li><strong>subclass</strong> - make a more specific version of a class and need to override or add new behaviors.</li>
+  <li><strong>abstract class</strong> - template for a group of subclasses. Guarantee that nobody can make objects of that type.</li>
+  <li><strong>interface</strong> - define common behavior, or a role that other classes can play, regardless of where these classes are in the inheritance tree.</li>
+</ul>
+
+<h3 id="any">Any</h3>
+
+<ul>
+  <li>mother of all classes</li>
+  <li>ensures every class inherits the same behaviour
+    <ul>
+      <li>equals(any: Any): Boolean</li>
+      <li>hashCode(): Int</li>
+      <li>toString(): String</li>
+    </ul>
+  </li>
+  <li>can use polymorphism with any object</li>
+</ul>
+
+<h3 id="data-class">data class</h3>
+
+<ul>
+  <li>swift <strong>struct</strong></li>
+  <li>object equality based on values of each object’s properties
+    <ul>
+      <li>equal object has same hashCode</li>
+      <li>toString value of each property</li>
+    </ul>
+  </li>
+  <li>===
+    <ul>
+      <li>reference to the same object</li>
+    </ul>
+  </li>
+  <li>best practice use <strong>val</strong> properties
+    <ul>
+      <li>can use var but not recommended</li>
+    </ul>
+  </li>
+  <li>can’t be <em>abstract</em> or <em>open</em></li>
+  <li>only include properties in primary constructor
+    <ul>
+      <li>compiler generated equality &amp; copy</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">data class</span> <span class="nc">Recipe</span><span class="p">(</span><span class="kd">val</span> <span class="py">title</span><span class="p">:</span> <span class="nc">String</span><span class="p">,</span>
+                    <span class="kd">val</span> <span class="py">mainIngredient</span><span class="p">:</span> <span class="nc">String</span><span class="p">,</span>
+                    <span class="kd">val</span> <span class="py">difficulty</span><span class="p">:</span> <span class="nc">String</span> <span class="p">=</span> <span class="s">"Easy"</span><span class="p">)</span> <span class="p">{</span> <span class="c1">//default parameter values</span>
+
+<span class="c1">//secondary constructor</span>
+ <span class="k">constructor</span><span class="p">(</span><span class="n">is_my_specialty</span><span class="p">:</span> <span class="nc">Boolean</span><span class="p">):</span> <span class="k">this</span><span class="p">(</span><span class="s">"Aglio Olio"</span><span class="p">,</span> <span class="s">"Prawn"</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">//code runs when secondary constructor is called</span>
+ <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// pass values in declaration</span>
+<span class="kd">val</span> <span class="py">r</span> <span class="p">=</span> <span class="nc">Recipe</span><span class="p">(</span><span class="s">"Spaghetti"</span><span class="p">,</span> <span class="s">"Beef"</span><span class="p">)</span>
+<span class="c1">// named arguments</span>
+<span class="kd">val</span> <span class="py">r2</span> <span class="p">=</span> <span class="nc">Recipe</span><span class="p">(</span><span class="n">title</span> <span class="p">=</span> <span class="s">"Spaghetti"</span><span class="p">,</span> 
+                <span class="n">mainIngredient</span> <span class="p">=</span> <span class="s">"Beef"</span><span class="p">,</span>
+                <span class="n">difficulty</span> <span class="p">=</span> <span class="s">"Medium"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="enum-classes">Enum classes</h3>
+
+<ul>
+  <li>create a set of values that represent the <em>only</em> valid values for a variable</li>
+  <li>each value defined by the enum class is an instance of that class</li>
+  <li>each value defined in an enum class can override the properties and functions it inherits from the class definition</li>
+</ul>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// instrument is a property each BandMember has</span>
+<span class="k">enum</span> <span class="kd">class</span> <span class="nc">BandMember</span><span class="p">(</span><span class="kd">val</span> <span class="py">instrument</span><span class="p">:</span> <span class="nc">String</span><span class="p">)</span> <span class="p">{</span>
+ <span class="nc">JERRY</span><span class="p">(</span><span class="s">"lead guitar"</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">override</span> <span class="k">fun</span> <span class="nf">sings</span><span class="p">()</span> <span class="p">=</span> <span class="s">"plaintively"</span>
+ <span class="p">},</span>
+ <span class="nc">BOBBY</span><span class="p">(</span><span class="s">"rhythm guitar"</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">override</span> <span class="k">fun</span> <span class="nf">sings</span><span class="p">()</span> <span class="p">=</span> <span class="s">"hoarsely"</span>
+ <span class="p">},</span>
+ <span class="nc">PHIL</span><span class="p">(</span><span class="s">"base"</span><span class="p">);</span>
+
+ <span class="k">open</span> <span class="k">fun</span> <span class="nf">sings</span><span class="p">()</span> <span class="p">=</span> <span class="s">"occasionally"</span>
+<span class="p">}</span>
+
+<span class="kd">var</span> <span class="py">selectedBandMember</span> <span class="p">=</span> <span class="nc">BandMember</span><span class="p">.</span><span class="nc">JERRY</span>
+<span class="nf">println</span><span class="p">(</span><span class="n">selectedBandMember</span><span class="p">.</span><span class="n">instrument</span><span class="p">)</span>
+<span class="nf">println</span><span class="p">(</span><span class="n">selectedBandMember</span><span class="p">.</span><span class="nf">sings</span><span class="p">())</span>
+</code></pre></div></div>
+
+<h3 id="sealed-class">Sealed class</h3>
+
+<ul>
+  <li>restrict your class hierarchy to a specific set of subtypes</li>
+  <li><strong>sealed</strong></li>
+  <li>similar to swift enum with associated value</li>
+  <li>sealed class lets you create multiple instances of each subtype</li>
+</ul>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">sealed</span> <span class="kd">class</span> <span class="nc">MessageType</span>
+<span class="kd">class</span> <span class="nc">MessageSuccess</span><span class="p">(</span><span class="kd">var</span> <span class="py">msg</span><span class="p">:</span> <span class="nc">String</span><span class="p">):</span> <span class="nc">MessageType</span><span class="p">()</span>
+<span class="kd">class</span> <span class="nc">MessageFailure</span><span class="p">(</span><span class="kd">var</span> <span class="py">msg</span><span class="p">:</span> <span class="nc">String</span><span class="p">,</span> <span class="kd">var</span> <span class="py">e</span><span class="p">:</span> <span class="nc">Exception</span><span class="p">):</span> <span class="nc">MessageType</span><span class="p">()</span>
+
+<span class="k">fun</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="p">:</span> <span class="nc">Array</span><span class="p">&lt;</span><span class="nc">String</span><span class="p">&gt;)</span> <span class="p">{</span>
+    <span class="kd">val</span> <span class="py">messageSuccess</span> <span class="p">=</span> <span class="nc">MessageSuccess</span><span class="p">(</span><span class="s">"Yay!"</span><span class="p">)</span>
+    <span class="kd">val</span> <span class="py">messageSuccess2</span> <span class="p">=</span> <span class="nc">MessageSuccess</span><span class="p">(</span><span class="s">"It worked!"</span><span class="p">)</span>
+    <span class="kd">val</span> <span class="py">messageFailure</span> <span class="p">=</span> <span class="nc">MessageFailure</span><span class="p">(</span><span class="s">"Boo!"</span><span class="p">,</span> <span class="nc">Exception</span><span class="p">(</span><span class="s">"Gone wrong."</span><span class="p">))</span>
+    <span class="kd">var</span> <span class="py">myMessage</span><span class="p">:</span> <span class="nc">MessageType</span> <span class="p">=</span> <span class="n">messageFailure</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="nested-and-inner-class">Nested and inner class</h3>
+
+<ul>
+  <li><strong>Nested</strong>
+    <ul>
+      <li>class that’s defined inside another class</li>
+      <li>can’t access a nested class from an instance of the outer class without first creating a property of that type inside the outer class
+        <ul>
+          <li>val nested = Outer().Nested() //won’t compile</li>
+        </ul>
+      </li>
+      <li>class doesn’t have access to an instance of the outer class</li>
+    </ul>
+  </li>
+  <li><strong>inner</strong>
+    <ul>
+      <li>access properties &amp; functions defined by its outer class</li>
+      <li>an access an inner class by creating an instance of the outer class, and then using this to create an instance of the inner class</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Outer</span> <span class="p">{</span>
+    <span class="kd">val</span> <span class="py">x</span> <span class="p">=</span> <span class="s">"x in outer class"</span>
+    <span class="kd">val</span> <span class="py">myInner</span> <span class="p">=</span> <span class="nc">Inner</span><span class="p">()</span>
+
+    <span class="kd">class</span> <span class="nc">Nested</span> <span class="p">{</span>
+        <span class="kd">val</span> <span class="py">y</span> <span class="p">=</span> <span class="s">"y in the nested class"</span>
+        <span class="k">fun</span> <span class="nf">myFun</span><span class="p">()</span> <span class="p">=</span> <span class="s">"this is nested function"</span>
+        <span class="c1">//fun getX() = "value of x is $x" //this line won't compile</span>
+    <span class="p">}</span>
+
+    <span class="k">inner</span> <span class="kd">class</span> <span class="nc">Inner</span> <span class="p">{</span>
+        <span class="kd">val</span> <span class="py">y</span> <span class="p">=</span> <span class="s">"y in the nested class"</span>
+        <span class="k">fun</span> <span class="nf">myFun</span><span class="p">()</span> <span class="p">=</span> <span class="s">"this is nested function"</span>
+        <span class="k">fun</span> <span class="nf">getX</span><span class="p">()</span> <span class="p">=</span> <span class="s">"value of x is $x"</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">val</span> <span class="py">nested</span> <span class="p">=</span> <span class="nc">Outer</span><span class="p">.</span><span class="nc">Nested</span><span class="p">()</span>
+<span class="kd">val</span> <span class="py">inner</span> <span class="p">=</span> <span class="nc">Outer</span><span class="p">().</span><span class="nc">Inner</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h3 id="singleton">Singleton</h3>
+
+<ul>
+  <li><strong>object</strong>
+    <ul>
+      <li>only a single instance of a given type can be created</li>
+      <li>Add an object declaration to a class to create a single instance of that type which belongs to the class</li>
+    </ul>
+  </li>
+  <li><strong>companion</strong>
+    <ul>
+      <li>A companion object is like a class object, except that you can omit the object’s name</li>
+      <li>Any functions you add to a companion object are shared by all class instances</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">object</span> <span class="nc">DuckManager</span> <span class="p">{</span>
+    <span class="k">fun</span> <span class="nf">herdDucks</span><span class="p">()</span> <span class="p">{</span> <span class="p">}</span>
+<span class="p">}</span>
+<span class="nc">DuckManager</span><span class="p">.</span><span class="nf">herdDucks</span><span class="p">()</span>
+
+<span class="kd">class</span> <span class="nc">Duck</span> <span class="p">{</span>
+    <span class="kd">object</span> <span class="nc">DuckFactory</span> <span class="p">{</span> 
+        <span class="k">fun</span> <span class="nf">create</span><span class="p">():</span> <span class="nc">Duck</span> <span class="p">=</span> <span class="nc">Duck</span><span class="p">()</span>
+     <span class="p">}</span>
+ 
+    <span class="k">companion</span> <span class="k">object</span> <span class="p">{</span>
+        <span class="k">fun</span> <span class="nf">create</span><span class="p">():</span> <span class="nc">Duck</span> <span class="p">=</span> <span class="nc">Duck</span><span class="p">()</span>
+     <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">val</span> <span class="py">duckFromFactory</span> <span class="p">=</span> <span class="nc">Duck</span><span class="p">.</span><span class="nc">DuckFactory</span><span class="p">.</span><span class="nf">create</span><span class="p">()</span>
+<span class="kd">val</span> <span class="py">duckCompanion</span> <span class="p">=</span> <span class="nc">Duck</span><span class="p">.</span><span class="nf">create</span><span class="p">()</span>
+<span class="kd">val</span> <span class="py">duckCompanion2</span> <span class="p">=</span> <span class="nc">Duck</span><span class="p">.</span><span class="nc">Companion</span><span class="p">.</span><span class="nf">create</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h3 id="object-expression">Object expression</h3>
+
+<ul>
+  <li><strong>object</strong></li>
+  <li>similar to Swift tuple</li>
+  <li>anonymous object with no predefined type</li>
+</ul>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">val</span> <span class="py">startingPoint</span> <span class="p">=</span> <span class="kd">object</span> <span class="err">{
+    val x = 0
+    val y = 0
+}
+println("starting point is ${starting</span><span class="nc">Point</span><span class="p">.</span><span class="n">x</span><span class="p">},</span> <span class="err">$</span><span class="p">{</span><span class="n">startingPoint</span><span class="p">.</span><span class="n">y</span><span class="p">}</span><span class="s">")
+</span></code></pre></div></div>
+
+<p><strong>is</strong></p>
+
+<ul>
+  <li>check for types</li>
+</ul>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">val</span> <span class="py">animal</span><span class="p">:</span> <span class="nc">Animal</span> <span class="p">=</span> <span class="nc">Wolf</span><span class="p">()</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">animal</span> <span class="k">is</span> <span class="nc">Wolf</span><span class="p">)</span> <span class="p">{</span>
+ <span class="n">animal</span><span class="p">.</span><span class="nf">doWolfThings</span><span class="p">()</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="as">as</h3>
+
+<ul>
+  <li>explicit cast</li>
+  <li>both hold reference to same object (but knowledge of what it is might be different)</li>
+</ul>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="py">wolf</span> <span class="p">=</span> <span class="n">r</span> <span class="k">as</span> <span class="nc">Wolf</span>
+<span class="n">wolf</span><span class="p">.</span><span class="nf">doWolfThings</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h2 id="when">when</h2>
+
+<ul>
+  <li>Swift Switch statement</li>
+</ul>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">when</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+ <span class="mi">0</span> <span class="p">-&gt;</span> <span class="nf">println</span><span class="p">(</span><span class="s">"x is 0"</span><span class="p">)</span>
+ <span class="mi">1</span><span class="p">,</span><span class="mi">2</span> <span class="p">-&gt;</span> <span class="nf">println</span><span class="p">(</span><span class="s">"x is 1,2"</span><span class="p">)</span>
+ <span class="k">else</span> <span class="p">-&gt;</span> <span class="p">{</span>
+  <span class="nf">println</span><span class="p">(</span><span class="s">"x is others"</span><span class="p">)</span>
+ <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="nullability">Nullability</h2>
+
+<ul>
+  <li>similar to swift</li>
+  <li><strong>?.</strong> (safe call operator)
+    <ul>
+      <li>can be chained</li>
+    </ul>
+  </li>
+  <li><strong>?.let</strong>
+    <ul>
+      <li>similar to <strong>if let</strong> (swift)</li>
+      <li>allows you to run code for a value that’s not null</li>
+      <li>use {} (curly braces) for the body</li>
+    </ul>
+  </li>
+  <li><strong>?:</strong> (Elvis operator)
+    <ul>
+      <li>if value is not null return value, else return value on the right</li>
+    </ul>
+  </li>
+  <li><strong>!!</strong> (not-null assertion operator)
+    <ul>
+      <li>throws NullPointerException</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="py">w</span><span class="p">:</span> <span class="nc">Wolf</span><span class="p">?</span> <span class="p">=</span> <span class="nc">Wolf</span><span class="p">()</span>
+
+<span class="c1">// safe call operator</span>
+<span class="n">w</span><span class="o">?.</span><span class="nf">doWolfThings</span><span class="p">()</span>
+
+<span class="c1">// if let equivalent</span>
+<span class="n">w</span><span class="o">?.</span><span class="nf">let</span> <span class="p">{</span>
+ <span class="nf">println</span><span class="p">(</span><span class="n">it</span><span class="p">.</span><span class="n">hunger</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1">// elvis</span>
+<span class="n">w</span><span class="o">?.</span><span class="n">hunger</span> <span class="o">?:</span> <span class="p">-</span><span class="mi">1</span>
+</code></pre></div></div>
+
+<h2 id="try-catch-finally">Try Catch Finally</h2>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">try</span> <span class="p">{</span>
+ <span class="nf">turnOvenOn</span><span class="p">()</span>
+ <span class="n">x</span><span class="p">.</span><span class="nf">bake</span><span class="p">()</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">e</span><span class="p">:</span> <span class="nc">BakingException</span><span class="p">)</span> <span class="p">{</span>
+ <span class="nf">println</span><span class="p">(</span><span class="s">"baking experiment failed"</span><span class="p">)</span>
+<span class="p">}</span> <span class="k">finally</span> <span class="p">{</span>
+ <span class="nf">turnOvenOff</span><span class="p">()</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="exception">Exception</h2>
+
+<ul>
+  <li>Every exception is of type: <strong>Exception</strong></li>
+  <li><strong>throw</strong> use to throw an exception
+    <ul>
+      <li>type <strong>Nothing</strong></li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">val</span> <span class="py">h</span> <span class="p">=</span> <span class="n">w</span><span class="o">?.</span><span class="n">hunger</span> <span class="o">?:</span> <span class="k">throw</span> <span class="nc">AnimalException</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h2 id="collections">Collections</h2>
+
+<h3 id="array">Array</h3>
+
+<ul>
+  <li>can’t change size</li>
+  <li>val numbers = arrayOf(1,2,3)</li>
+  <li>can be updated</li>
+</ul>
+
+<h3 id="list">List</h3>
+
+<ul>
+  <li>When sequence matters</li>
+  <li>Iterable</li>
+  <li>(Might be similar to array swift?)</li>
+  <li>Allows duplicate values</li>
+</ul>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">val</span> <span class="py">shopping</span> <span class="p">=</span> <span class="nf">listOf</span><span class="p">(</span><span class="s">"Tea"</span><span class="p">,</span> <span class="s">"Eggs"</span><span class="p">,</span> <span class="s">"Milk"</span><span class="p">)</span>
+
+<span class="c1">// iterate</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">item</span> <span class="k">in</span> <span class="n">shopping</span><span class="p">)</span> <span class="nf">println</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+
+<span class="c1">// check existence</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">shopping</span><span class="p">.</span><span class="nf">contains</span><span class="p">(</span><span class="s">"Milk"</span><span class="p">))</span> <span class="p">{</span>
+    <span class="nf">println</span><span class="p">(</span><span class="n">shopping</span><span class="p">.</span><span class="nf">indexOf</span><span class="p">(</span><span class="s">"Milk"</span><span class="p">))</span>
+<span class="p">}</span>
+
+<span class="kd">val</span> <span class="py">updateableList</span> <span class="p">=</span> <span class="nf">mutableListOf</span><span class="p">(</span><span class="s">"Tea"</span><span class="p">)</span>
+
+<span class="n">updateableList</span><span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="s">"Bread"</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="n">updateableList</span><span class="p">.</span><span class="nf">contains</span><span class="p">(</span><span class="s">"Bread"</span><span class="p">))</span> <span class="p">{</span>
+   <span class="n">updateableList</span><span class="p">.</span><span class="nf">remove</span><span class="p">(</span><span class="s">"Bread"</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">val</span> <span class="py">toAdd</span> <span class="p">=</span> <span class="nf">listOf</span><span class="p">(</span><span class="s">"Cookies"</span><span class="p">,</span> <span class="s">"Sugar"</span><span class="p">)</span>
+<span class="n">updateableList</span><span class="p">.</span><span class="nf">addAll</span><span class="p">(</span><span class="n">toAdd</span><span class="p">)</span>
+
+<span class="kd">val</span> <span class="py">toRemove</span> <span class="p">=</span> <span class="nf">listOf</span><span class="p">(</span><span class="s">"Milk"</span><span class="p">,</span> <span class="s">"Sugar"</span><span class="p">)</span>
+<span class="n">updateableList</span><span class="p">.</span><span class="nf">removeAll</span><span class="p">(</span><span class="n">toRemove</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="set">Set</h3>
+
+<ul>
+  <li>When uniqueness matters</li>
+  <li>Iterable</li>
+  <li>Steps for determining uniqueness
+    <ol>
+      <li>Gets the object’s <strong>hash code</strong> and uses that to compare with other objects in the set
+        <ol>
+          <li>hash code as “bucket”</li>
+          <li>matching hash codes go to step 2</li>
+        </ol>
+      </li>
+      <li><strong>===</strong> operator to compare the new value against any objects it contains with the same hash code (bucket)</li>
+      <li><strong>== operator</strong> to compare the new value against any objects it contains with matching hash codes</li>
+    </ol>
+  </li>
+  <li>Same value
+    <ul>
+      <li>same object</li>
+      <li>equal to a value it already contains</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">val</span> <span class="py">friendSet</span> <span class="p">=</span> <span class="nf">setOf</span><span class="p">(</span><span class="s">"Jim"</span><span class="p">,</span> <span class="s">"Sue"</span><span class="p">,</span> <span class="s">"Sue"</span><span class="p">,</span> <span class="s">"Nick"</span><span class="p">,</span> <span class="s">"Nick"</span><span class="p">)</span>
+
+<span class="kd">val</span> <span class="py">mFriendSet</span> <span class="p">=</span> <span class="nf">mutableSetOf</span><span class="p">(</span><span class="s">"Jim"</span><span class="p">,</span> <span class="s">"Sue"</span><span class="p">)</span>
+<span class="n">mFriendSet</span><span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="s">"Nick"</span><span class="p">)</span>
+<span class="n">mFriendSet</span><span class="p">.</span><span class="nf">remove</span><span class="p">(</span><span class="s">"Nick"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="map">Map</h3>
+
+<ul>
+  <li>Key value pair</li>
+  <li>NOT iterable!</li>
+  <li>Similar to dictionary in swift</li>
+</ul>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">val</span> <span class="py">ri</span> <span class="p">=</span> <span class="nc">Recipe</span><span class="p">(</span><span class="s">"Chicken soup"</span><span class="p">)</span>
+<span class="kd">val</span> <span class="py">r2</span> <span class="p">=</span> <span class="nc">Recipe</span><span class="p">(</span><span class="s">"Thai Curry"</span><span class="p">)</span>
+<span class="kd">val</span> <span class="py">recipeMap</span><span class="p">:</span> <span class="nc">Map</span><span class="p">&lt;</span><span class="nc">String</span><span class="p">,</span> <span class="nc">Recipe</span><span class="p">&gt;</span> <span class="p">=</span> <span class="nf">mapOf</span><span class="p">(</span><span class="s">"recipe1"</span> <span class="n">to</span> <span class="n">r1</span><span class="p">,</span> <span class="s">"recipe2"</span> <span class="n">to</span> <span class="n">r2</span><span class="p">)</span>
+
+<span class="n">recipeMap</span><span class="p">.</span><span class="nf">containsKey</span><span class="p">(</span><span class="s">"recipe1"</span><span class="p">)</span>
+<span class="n">recipeMap</span><span class="p">.</span><span class="nf">containsValue</span><span class="p">(</span><span class="n">r1</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="n">recipeMap</span><span class="p">.</span><span class="nf">containsKey</span><span class="p">(</span><span class="s">"recipe1"</span><span class="p">)</span> <span class="p">{</span>
+ <span class="kd">val</span> <span class="py">recipeMap</span><span class="p">.</span><span class="nf">getValue</span><span class="p">(</span><span class="s">"recipe1"</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="k">for</span> <span class="p">((</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="k">in</span> <span class="n">recipeMap</span><span class="p">)</span> <span class="p">{</span>
+     <span class="nf">println</span><span class="p">(</span><span class="s">"Key is $key, value is $value"</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">val</span> <span class="py">mRecipeMap</span> <span class="p">=</span> <span class="nf">mutableMapOf</span><span class="p">(</span><span class="s">"recipe1"</span> <span class="n">to</span> <span class="n">r1</span><span class="p">,</span> <span class="s">"recipe2"</span> <span class="n">to</span> <span class="n">r2</span><span class="p">)</span>
+
+<span class="kd">val</span> <span class="py">r4</span> <span class="p">=</span> <span class="nc">Recipe</span><span class="p">(</span><span class="s">"Jambalaya"</span><span class="p">)</span>
+<span class="kd">val</span> <span class="py">r5</span> <span class="p">=</span> <span class="nc">Recipe</span><span class="p">(</span><span class="s">"Sausage Rolls"</span><span class="p">)</span>
+<span class="kd">val</span> <span class="py">recipesToAdd</span> <span class="p">=</span> <span class="nf">mapOf</span><span class="p">(</span><span class="s">"Recipe4"</span> <span class="n">to</span> <span class="n">r4</span><span class="p">,</span> <span class="s">"Recipe5"</span> <span class="n">to</span> <span class="n">r5</span><span class="p">)</span>
+
+<span class="n">mRecipeMap</span><span class="p">.</span><span class="nf">putAll</span><span class="p">(</span><span class="n">recipesToAdd</span><span class="p">)</span>
+
+<span class="n">mRecipeMap</span><span class="p">.</span><span class="n">values</span>
+<span class="n">mRecipeMap</span><span class="p">.</span><span class="n">keys</span>
+</code></pre></div></div>
+
+<h2 id="generics">Generics</h2>
+
+<ul>
+  <li>similar definition in swift?
+    <ul>
+      <li>val x: MutableList&lt; <strong>String</strong>&gt;</li>
+    </ul>
+  </li>
+  <li>Compiler can infer generic type</li>
+</ul>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">interface</span> <span class="nc">MutableList</span><span class="p">&lt;</span><span class="nc">E</span><span class="p">&gt;</span> <span class="p">:</span> <span class="nc">List</span><span class="p">&lt;</span><span class="nc">E</span><span class="p">&gt;,</span> <span class="nc">MutableCollection</span><span class="p">&lt;</span><span class="nc">E</span><span class="p">&gt;</span> <span class="p">{</span> <span class="p">}</span>
+
+<span class="k">abstract</span> <span class="kd">class</span> <span class="nc">Pet</span><span class="p">(</span><span class="kd">var</span> <span class="py">name</span><span class="p">:</span> <span class="nc">String</span><span class="p">)</span>
+<span class="kd">class</span> <span class="nc">Cat</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nc">String</span><span class="p">):</span> <span class="nc">Pet</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+<span class="kd">class</span> <span class="nc">Dog</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nc">String</span><span class="p">):</span> <span class="nc">Pet</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+<span class="kd">class</span> <span class="nc">Fish</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nc">String</span><span class="p">):</span> <span class="nc">Pet</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+
+<span class="kd">class</span> <span class="nc">Contest</span><span class="p">&lt;</span><span class="nc">T</span><span class="p">:</span> <span class="nc">Pet</span><span class="p">&gt;</span> <span class="p">{</span> <span class="p">}</span>
+
+<span class="k">fun</span> <span class="p">&lt;</span><span class="nc">T</span><span class="p">:</span> <span class="nc">Pet</span><span class="p">&gt;</span> <span class="nf">listPet</span><span class="o">..</span><span class="p">.</span>
+
+<span class="c1">// to call function, specify type</span>
+<span class="kd">val</span> <span class="py">catList</span> <span class="p">=</span> <span class="n">listPet</span><span class="p">&lt;</span><span class="nc">Cat</span><span class="p">&gt;(</span><span class="nc">Cat</span><span class="p">(</span><span class="s">"Zazzles"</span><span class="p">))</span>
+
+<span class="c1">// can define multiple generic types</span>
+<span class="kd">class</span> <span class="nc">MyMap</span><span class="p">&lt;</span><span class="nc">K</span><span class="p">,</span> <span class="nc">V</span><span class="p">&gt;</span> <span class="p">{</span> <span class="p">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>A Retailer<Pet> variable will only accept a Retailer<Pet> object
+</Pet></Pet>    <ul>
+      <li>val petRetailer: Retailer<Pet> = CatRetailer() //this wont' compile</Pet></li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="out-covariant"><strong>out</strong> (covariant)</h3>
+
+<ul>
+  <li>generic subtype object in a place of a generic supertype</li>
+  <li>generic type is <strong>covariant</strong>
+    <ul>
+      <li>can use a subtype in place of a supertype.</li>
+    </ul>
+  </li>
+  <li>can’t use if the class has function parameters or var properties of that generic type.</li>
+  <li>used for collections</li>
+</ul>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">interface</span> <span class="nc">Retailer</span><span class="p">&lt;</span><span class="nc">T</span><span class="p">&gt;</span> <span class="p">{</span>
+ <span class="k">fun</span> <span class="nf">sell</span><span class="p">():</span> <span class="nc">T</span>
+<span class="p">}</span>
+<span class="c1">// val petRetailer: Retailer&lt;Pet&gt; = CatRetailer() //this wont' compile</span>
+
+<span class="kd">interface</span> <span class="nc">Retailer</span><span class="p">&lt;</span><span class="k">out</span> <span class="nc">T</span><span class="p">&gt;</span> <span class="p">{</span> <span class="o">..</span> <span class="p">}</span> 
+<span class="kd">val</span> <span class="py">petRetailer</span><span class="p">:</span> <span class="nc">Retailer</span><span class="p">&lt;</span><span class="nc">Pet</span><span class="p">&gt;</span> <span class="p">=</span> <span class="nc">CatRetailer</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h3 id="in-contravariant">in (contravariant)</h3>
+
+<ul>
+  <li>lets you use a generic supertype in place of a subtype</li>
+  <li>can use a supertype in place of a subtype. This is the opposite of covariance.</li>
+  <li>can’t use if class functions use it as a return type, or if that type is used by any properties, irrespective of whether they’re defined using val or var</li>
+</ul>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Vet</span><span class="p">&lt;</span><span class="k">in</span> <span class="nc">T</span><span class="p">:</span> <span class="nc">Pet</span><span class="p">&gt;</span> <span class="p">{</span>
+ <span class="k">fun</span> <span class="nf">treat</span><span class="p">(</span><span class="n">t</span><span class="p">:</span> <span class="nc">T</span><span class="p">)</span> <span class="p">{</span>
+ <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">val</span> <span class="py">catContest</span> <span class="p">=</span> <span class="nc">Contest</span><span class="p">&lt;</span><span class="nc">Cat</span><span class="p">&gt;(</span><span class="nc">Vet</span><span class="p">&lt;</span><span class="nc">Pet</span><span class="p">&gt;())</span>
+
+<span class="c1">// can be defined locally</span>
+<span class="kd">class</span> <span class="nc">Vet</span><span class="p">&lt;</span><span class="nc">T</span><span class="p">:</span> <span class="nc">Pet</span><span class="p">&gt;</span> <span class="p">{</span>
+ <span class="k">fun</span> <span class="nf">treat</span><span class="p">(</span><span class="n">t</span><span class="p">:</span> <span class="nc">T</span><span class="p">)</span> <span class="p">{</span>
+ <span class="p">}</span>
+<span class="p">}</span>
+<span class="kd">class</span> <span class="nc">Contest</span><span class="p">&lt;</span><span class="nc">T</span><span class="p">:</span> <span class="nc">Pet</span><span class="p">&gt;(</span><span class="kd">var</span> <span class="py">vet</span><span class="p">:</span> <span class="nc">Vet</span><span class="p">&lt;</span><span class="k">in</span> <span class="nc">T</span><span class="p">&gt;)</span> <span class="p">{</span> <span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="invariant">invariant</h3>
+
+<ul>
+  <li>generic type has no in or out prefix</li>
+  <li>can only accept references of that specific ty</li>
+</ul>
+
+<h2 id="lambdas">Lambdas</h2>
+
+<ul>
+  <li>type of object that holds a block of code
+    <ul>
+      <li><strong>(parameters) -&gt; return_type</strong></li>
+    </ul>
+  </li>
+  <li>{ x: Int, y: Int → x + y }</li>
+  <li><strong>→</strong>
+    <ul>
+      <li>separate parameters from the body</li>
+    </ul>
+  </li>
+  <li><strong>invoke</strong>
+    <ul>
+      <li>call lambda</li>
+    </ul>
+  </li>
+  <li><strong>it</strong>
+    <ul>
+      <li>lambda with 1 parameter that the compiler can infer</li>
+    </ul>
+  </li>
+  <li><strong>Unit</strong>
+    <ul>
+      <li>similar to return <strong>Void</strong> (in swift)</li>
+      <li>lambda has no return value
+        <ul>
+          <li>() → Unit</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">val</span> <span class="py">addInts</span> <span class="p">=</span> <span class="p">{</span> <span class="n">x</span><span class="p">:</span> <span class="nc">Int</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="nc">Int</span> <span class="p">-&gt;</span> <span class="n">x</span> <span class="p">+</span> <span class="n">y</span> <span class="p">}</span>
+
+<span class="kd">val</span> <span class="py">result</span> <span class="p">=</span> <span class="n">addInts</span><span class="p">.</span><span class="nf">invoke</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+<span class="kd">val</span> <span class="py">result2</span> <span class="p">=</span> <span class="nf">addInts</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+
+<span class="kd">val</span> <span class="py">greeting</span><span class="p">:</span> <span class="p">()</span> <span class="p">-&gt;</span> <span class="nc">String</span> <span class="p">=</span> <span class="p">{</span> <span class="s">"Hello!"</span> <span class="p">}</span>
+
+<span class="kd">val</span> <span class="py">addFive</span><span class="p">:</span> <span class="p">(</span><span class="nc">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nc">Int</span> <span class="p">=</span> <span class="p">{</span> <span class="n">it</span> <span class="p">+</span> <span class="mi">5</span> <span class="p">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li><strong>Higher order function</strong>
+    <ul>
+      <li>uses a lambda as a parameter or return value</li>
+      <li>can move the lambda outside ()
+        <ul>
+          <li>similar to swift</li>
+        </ul>
+      </li>
+      <li>function can return a lambda</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="typealias">typealias</h2>
+
+<ul>
+  <li>provide different name for an existing type
+    <ul>
+      <li>typealias DoubleConversion = (Double) → Double</li>
+      <li>typealias DuckArray = Array<Duck></Duck></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="higher-order-functions">higher order functions</h2>
+
+<ul>
+  <li><strong>filter</strong></li>
+  <li><strong>minBy</strong></li>
+  <li><strong>maxBy</strong>
+    <ul>
+      <li>If you call minBy or maxBy on a collection that contains no items, the function will return a null value.</li>
+    </ul>
+  </li>
+  <li><strong>map</strong>
+    <ul>
+      <li>returns a <strong>List</strong> and not <strong>Map</strong></li>
+    </ul>
+  </li>
+  <li><strong>forEach</strong>
+    <ul>
+      <li>similar to for loop</li>
+      <li>arrays, Lists, Sets, and on a Map’s entries, keys and values properties.
+        <ul>
+          <li>Not Map</li>
+        </ul>
+      </li>
+      <li>has no return value</li>
+    </ul>
+  </li>
+  <li><strong>groupBy</strong>
+    <ul>
+      <li>group your items in a collection according to some criteria</li>
+      <li>doesn’t work on Map</li>
+      <li>returns a <strong>Map</strong> with a <strong>List</strong> as the value
+        <ul>
+          <li>Map&lt;String, List<Grocery>&gt;</Grocery></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><strong>fold</strong>
+    <ul>
+      <li>similar to <strong>reduce</strong></li>
+      <li>specify an initial value, and perform some operation on it for each item in a collection</li>
+      <li>doesn’t work on Map</li>
+      <li>default left to right
+        <ul>
+          <li>use <strong>foldRight</strong></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><strong>reduce</strong>
+    <ul>
+      <li>similar to <strong>fold</strong> but no need to specify initial value</li>
+      <li>default left to right
+        <ul>
+          <li>use <strong>reduceRight</strong></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>can chain higher order functions</li>
+</ul>
+
+<h2 id="coroutines">Coroutines</h2>
+
+<ul>
+  <li>write code that runs asynchronously</li>
+  <li>coroutine
+    <ul>
+      <li>like a lightweight thread</li>
+      <li>run on a shared pool of threads</li>
+      <li>same thread can run many coroutines</li>
+    </ul>
+  </li>
+  <li>launching is like starting a separate thread of execution, or <strong>thread</strong></li>
+  <li>run on a shared pool of threads by default, and the same thread can run many coroutines</li>
+  <li><strong>GlobalScope.launch</strong>
+    <ul>
+      <li>separate coroutine in the background by enclosing the code</li>
+      <li>
+        <p>kotlinx.coroutines library</p>
+
+        <div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">fun</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+ <span class="nc">GlobalScope</span><span class="p">.</span><span class="nf">launch</span> <span class="p">{</span> <span class="nf">playBeats</span><span class="p">(</span><span class="s">"x-x-x-"</span><span class="p">)</span> <span class="p">}</span>
+ <span class="nf">playBeats</span><span class="p">(</span><span class="s">"x----x----"</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li><strong>runBlocking</strong>
+    <ul>
+      <li>code to run in the same thread but in separate coroutines</li>
+      <li>blocks the current thread until the code that’s passed to it finishes running</li>
+      <li>blocks the current thread</li>
+    </ul>
+  </li>
+  <li><strong>launch</strong>
+    <ul>
+      <li>launch a new coroutine</li>
+      <li>launch a coroutine that runs in the same thread</li>
+      <li>use the same scope as runBlocking</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">fun</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+ <span class="nf">runBlocking</span> <span class="p">{</span>
+  <span class="nf">launch</span> <span class="p">{</span> <span class="nf">playBeats</span><span class="p">(</span><span class="s">"x-x-x-"</span><span class="p">)</span> <span class="p">}</span>
+  <span class="nf">playBeats</span><span class="p">(</span><span class="s">"x----x----"</span><span class="p">)</span>
+ <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li><strong>delay</strong>
+    <ul>
+      <li>pauses the current coroutine</li>
+      <li>allows other code to run</li>
+      <li>similar to Thread.sleep</li>
+    </ul>
+  </li>
+  <li><strong>suspend</strong>
+    <ul>
+      <li>
+        <p>call a suspendable function (such as delay) from another function, that function must be marked with suspend</p>
+
+        <div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">suspend</span> <span class="k">fun</span> <span class="nf">playBeats</span><span class="p">(</span><span class="n">beats</span><span class="p">:</span> <span class="nc">String</span><span class="p">)</span> <span class="p">{</span> 
+ <span class="nf">delay</span><span class="p">(</span><span class="o">..</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="test">Test</h2>
+
+<h3 id="junit">JUnit</h3>
+
+<ul>
+  <li>Each test is held in a function, prefixed with the annotation <strong>@Test</strong></li>
+  <li>assertEquals</li>
+  <li>use back ticks for function names
+    <ul>
+      <li>wrap function names in back-ticks (<strong>`</strong>)</li>
+      <li>fun <code class="language-plaintext highlighter-rouge">should be able to add 3</code>()</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="kotlintest">KotlinTest</h3>
+
+<ul>
+  <li><strong>String Specification</strong>—or <strong>StringSpec</strong></li>
+  <li>use rows to test your code against entire sets of data</li>
+</ul>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s">"should be able to add 3 and 4 and it musn't go wrong"</span> <span class="p">{</span>
+ <span class="kd">val</span> <span class="py">totaller</span> <span class="p">=</span> <span class="nc">Totaller</span><span class="p">()</span>
+ <span class="n">totaller</span><span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="n">should</span> <span class="n">be</span> <span class="mi">7</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="package-and-import">Package and import</h2>
+
+<ul>
+  <li>Package
+    <ul>
+      <li>organize your code</li>
+      <li>prevents name conflicts</li>
+      <li>Each source file can only have one package declaration</li>
+    </ul>
+  </li>
+  <li><strong>import</strong>
+    <ul>
+      <li>can refer to the class without typing the fully qualified name each time</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="visibility-modifiers">Visibility Modifiers</h2>
+
+<ul>
+  <li><strong>public</strong>
+    <ul>
+      <li>visible everywhere</li>
+      <li>default behaviour</li>
+    </ul>
+  </li>
+  <li><strong>private</strong>
+    <ul>
+      <li>visible to code inside its source file</li>
+    </ul>
+  </li>
+  <li><strong>internal</strong>
+    <ul>
+      <li>visible inside the same module, but invisible elsewhere</li>
+      <li>module - set of Kotlin files that are compiled together</li>
+    </ul>
+  </li>
+  <li><strong>protected</strong>
+    <ul>
+      <li>applied to properties, functions &amp; other members</li>
+      <li>Makes the member visible inside the class, and any of its subclasses.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="extensions">Extensions</h2>
+
+<ul>
+  <li>add new functions and properties to an existing type without you having to create a whole new subtype.</li>
+</ul>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// add function to Double</span>
+<span class="k">fun</span> <span class="nc">Double</span><span class="p">.</span><span class="nf">toDollar</span><span class="p">():</span> <span class="nc">String</span> <span class="p">{</span>
+ <span class="k">return</span> <span class="s">"$$this"</span>
+<span class="p">}</span>
+
+<span class="n">let</span> <span class="n">dbl</span> <span class="p">=</span> <span class="mf">42.25</span>
+<span class="nf">println</span><span class="p">(</span><span class="n">dbl</span><span class="p">.</span><span class="nf">toDollar</span><span class="p">())</span>
+
+<span class="c1">// add property to String</span>
+<span class="kd">val</span> <span class="py">String</span><span class="p">.</span><span class="n">halfLength</span>
+ <span class="k">get</span><span class="p">()</span> <span class="p">=</span> <span class="n">length</span><span class="p">/</span><span class="mf">2.0</span>
+
+<span class="kd">val</span> <span class="py">test</span> <span class="p">=</span> <span class="s">"This is a test"</span>
+<span class="nf">println</span><span class="p">(</span><span class="n">test</span><span class="p">.</span><span class="n">halfLength</span><span class="p">)</span>
+</code></pre></div></div>
+
+    </div>
+
+    <div class="post__bottom">
+      
+      
+      <div class="post__tags">
+        
+        <a href="/tag/kotlin" class="post__tag">kotlin</a>
+        
+      </div>
+      
+    </div>
+
+    
+
+  </article>
+</div>
+<!-- end post -->
+    </main>
+    <!-- end content -->
+
+    <div class="top" title="Top"><i class="ion ion-ios-arrow-round-up"></i></div>
+    <!-- begin footer -->
+<div class="footer_spacer"></div>
+<footer class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col col-12">
+        <div class="footer__info">
+          <div class="copyright">2021 &copy; <a href="/">aci.codes</a>. Crafted & Designed by <a href="https://jekyllthemes.io/developers/artem-sheludko">Artem Sheludko</a>.</div>
+          <div class="toggle-theme">
+            <div class="toggle-moon"><i class="ion ion-ios-moon"></i></div>
+            <div class="toggle-sun"><i class="ion ion-ios-sunny"></i></div>
+            <div class="toggle-thumb"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</footer>
+<!-- end footer -->
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="/js/scripts.js"></script>
+</body>
+
+</html>
