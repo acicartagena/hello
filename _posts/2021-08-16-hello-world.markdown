@@ -29,6 +29,7 @@ I struggle with looking at a blank page and not knowing how to start things. In 
 This blog is generated using Jekyll and is stored in this [repository](https://github.com/acicartagena/hello-blog).  I like that writing posts would have the same workflow as coding, where I can continue to update/improve blog posts as commits. The underlying architecture of the blog (having it hosted in git) has ease of iteration/improvement as one of its main features. Using git also allows to keep a history of the post, and diffs can be available of the past revisions. 
 
 (I don't know much about web development, and so if there are issues in the blog feel free to reach out and let me know)
+(I also forgot what I used to host and so I'm typing this here as a note for future angela to check Netlify)
 
 ### Feedback ###
 During my student days, English (especially grammar) was my worst subject.   I tend to ramble a lot in writing and have trouble with rules on tenses and punctuation. When it comes to code, there's the compiler that tells me whenever I broke some of them. When it comes to writing, I would probably read them and have a sense of whether it feels right or not. (Probably not the best way) English language aside, there's also a lot of room for improvement in technical writing. Have I achieved my goal of communicating my ideas in a way that's easily understood?

@@ -6,6 +6,9 @@ date:   2022-04-05 01:12:35 +1000
 image:  '/images/posts/pr-metrics.png'
 tags:   [code reviews, prmetrics]
 ---
+
+[![ipad](/images/posts/pr-metrics-dl-appstore-light.png){: width="150" height="50" style="display:block; margin-left:auto; margin-right:auto" }](https://apps.apple.com/au/app/pr-metrics/id1617638463)
+
 View detailed (but anonymous) Github Pull Request Metrics. The app anonymises the contributors of the repo to lessen the bias when viewing the data. 
 
 ![PR Metrics Chart]( /images/posts/pr-metrics-chart.png)
