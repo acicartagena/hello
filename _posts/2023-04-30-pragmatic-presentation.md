@@ -242,5 +242,4 @@ I first read this book from the advice of my mentor. For this, I used the 20th a
 - Instead of wasting effort designing for an uncertain future, you can always fall back on designing your code to be replaceable.
 - Much of the time, tomorrow looks a lot like today. But don't count on it  
 
-# Presentation
-<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQaCBEtBfIbxfFKcsmDYL0toDeVMYpejEkw5sW8LPNt3NJ8Agguskxj8eRV7Bu3dsGiJ1NFf8X_2EiM/embed?start=false&loop=true&delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+[Link](https://docs.google.com/presentation/d/1BvZvvv6qqLsVgvC4B9EZHuCJfdMjp9-1ItTQwQoy3tY/edit?usp=sharing) to the presentation
