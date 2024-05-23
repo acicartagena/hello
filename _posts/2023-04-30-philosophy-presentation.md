@@ -46,7 +46,7 @@ The next sections are more to do with ideas / quotes on how to minimise complexi
 
 > "Working Code isn't Enough"
 
-![workaround](https://www.monkeyuser.com/assets/images/2018/88-workaround.png){: width="375" height="373" style="display:block; margin-left:auto; margin-right:auto"}
+![workaround](/images/posts/workaround.png){: width="375" height="373" style="display:block; margin-left:auto; margin-right:auto"}
 
 ### Tactical Programming ❌
 - Get something working
